@@ -1,11 +1,12 @@
-<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>塵間修仙錄</title><style>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>塵間修仙錄</title><style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#0b1016;--ink2:#121a24;--pane:rgba(18,26,36,.82);--line:rgba(214,186,124,.22);--gold:#d8b96c;--gold2:#f3e0a8;--txt:#e8eef6;--dim:#93a3b5;--r3:#7f93ad;--r4:#b98ce0;--r5:#e8b45a;--ok:#7fd6a6;--bad:#e78c8c}
 html,body{height:100%}
 body{background:var(--ink);color:var(--txt);font-family:"Noto Serif TC","Songti TC",Georgia,serif;overflow:hidden}
 #bg{position:fixed;inset:0;z-index:0}
-.app{position:relative;z-index:1;display:grid;grid-template-columns:252px 1fr;height:100vh}
+.app{position:relative;z-index:1;display:grid;grid-template-columns:252px 1fr;height:100vh;height:100dvh}
 .side{background:linear-gradient(180deg,rgba(12,18,25,.95),rgba(10,14,20,.88));border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto}
+.side>*{flex-shrink:0}
 .logo{padding:16px 16px 10px;border-bottom:1px solid var(--line)}
 .logo h1{font-size:20px;letter-spacing:4px;color:var(--gold2);text-shadow:0 0 18px rgba(216,185,108,.45)}
 .logo p{font-size:11px;color:var(--dim);letter-spacing:2px;margin-top:4px}
@@ -15,9 +16,9 @@ body{background:var(--ink);color:var(--txt);font-family:"Noto Serif TC","Songti 
 .realm span{font-size:11px;color:var(--dim)}
 .bar{height:7px;border-radius:7px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:7px}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#8a6b2a,var(--gold),var(--gold2));box-shadow:0 0 10px rgba(216,185,108,.5)}
-.sm{font-size:11px;color:var(--dim);margin-top:5px;display:flex;justify-content:space-between}
+.sm{font-size:11px;color:var(--dim);margin-top:5px;display:flex;justify-content:space-between;gap:8px}
 .res{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:12px}
-.res div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:7px;padding:5px 7px;display:flex;justify-content:space-between}
+.res div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:7px;padding:5px 7px;display:flex;justify-content:space-between;gap:4px}
 .res b{color:var(--gold2);font-weight:600}
 nav{padding:8px;display:flex;flex-direction:column;gap:3px;flex:1}
 nav button{background:none;border:1px solid transparent;color:var(--dim);text-align:left;padding:10px 12px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:14px;letter-spacing:2px;transition:.18s}
@@ -27,13 +28,14 @@ nav button.on{color:#1a140a;background:linear-gradient(90deg,var(--gold),var(--g
 main{overflow-y:auto;padding:22px 26px 60px}
 .wrap{max-width:1080px;margin:0 auto}
 h2.t{font-size:22px;letter-spacing:5px;color:var(--gold2);margin-bottom:4px}
-p.d{font-size:12.5px;color:var(--dim);margin-bottom:16px;line-height:1.8}
+p.d{font-size:12.5px;color:var(--dim);margin-bottom:16px;line-height:1.8;overflow-wrap:anywhere}
 .card{background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:16px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .grid{display:grid;gap:12px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
-.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-h3{font-size:15px;letter-spacing:3px;color:var(--gold2);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.grid>*{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(215px,100%),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr))}
+h3{font-size:15px;letter-spacing:3px;color:var(--gold2);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .btn{background:linear-gradient(135deg,#2a3545,#1a2330);border:1px solid var(--line);color:var(--txt);padding:8px 14px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:13px;letter-spacing:1px;transition:.16s}
 .btn:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-1px)}
 .btn.p{background:linear-gradient(135deg,#9d7c32,#e3c879);color:#1a140a;font-weight:700;border-color:var(--gold2)}
@@ -44,8 +46,8 @@ label{font-size:11px;color:var(--dim);display:block;margin-bottom:4px;letter-spa
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .tag{font-size:10.5px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);background:rgba(255,255,255,.04)}
 .task{border:1px solid var(--line);border-radius:12px;padding:12px;background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.01))}
-.task.dn{opacity:.5}
-.task h4{font-size:15px;margin-bottom:6px;letter-spacing:1px}
+.task.dn{opacity:.55}
+.task h4{font-size:15px;margin-bottom:6px;letter-spacing:1px;overflow-wrap:anywhere}
 .rw{font-size:11px;color:var(--gold);margin:7px 0}
 .it{border-radius:12px;padding:12px;text-align:center;border:1px solid var(--line);background:rgba(255,255,255,.03);cursor:pointer;transition:.16s;position:relative}
 .it:hover{transform:translateY(-3px)}
@@ -53,7 +55,7 @@ label{font-size:11px;color:var(--dim);display:block;margin-bottom:4px;letter-spa
 .it.r5{border-color:rgba(232,180,90,.7);box-shadow:0 0 22px rgba(232,180,90,.22) inset}
 .it.eq{outline:2px solid var(--gold2)}
 .gl{font-size:34px;line-height:1;filter:drop-shadow(0 0 10px rgba(255,255,255,.25))}
-.it b{display:block;font-size:13px;margin:7px 0 3px;letter-spacing:1px}
+.it b{display:block;font-size:13px;margin:7px 0 3px;letter-spacing:1px;overflow-wrap:anywhere}
 .it small{font-size:10.5px;color:var(--dim);display:block;line-height:1.6}
 .rr3{color:var(--r3)}.rr4{color:var(--r4)}.rr5{color:var(--r5)}
 .ov{position:fixed;inset:0;background:rgba(4,7,11,.9);z-index:50;display:none;align-items:center;justify-content:center;backdrop-filter:blur(7px)}
@@ -61,39 +63,61 @@ label{font-size:11px;color:var(--dim);display:block;margin-bottom:4px;letter-spa
 .md{background:linear-gradient(160deg,#16202c,#0d141c);border:1px solid var(--line);border-radius:16px;padding:22px;max-width:580px;width:92%;max-height:86vh;overflow-y:auto;box-shadow:0 0 60px rgba(0,0,0,.7)}
 .ring{width:230px;height:230px;margin:0 auto;position:relative}
 .ring svg{transform:rotate(-90deg)}
-.ring div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
 .ring b{font-size:44px;color:var(--gold2);letter-spacing:2px}
 .breathe{animation:br 7s ease-in-out infinite}
 @keyframes br{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
-#toast{position:fixed;left:50%;top:20px;transform:translateX(-50%);z-index:90;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:none}
-#toast div{background:rgba(16,24,34,.95);border:1px solid var(--gold);color:var(--gold2);padding:9px 18px;border-radius:30px;font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.5);animation:up .3s}
+#toast{position:fixed;left:50%;top:20px;transform:translateX(-50%);z-index:90;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:none;width:92%}
+#toast div{background:rgba(16,24,34,.95);border:1px solid var(--gold);color:var(--gold2);padding:9px 18px;border-radius:30px;font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.5);animation:up .3s;text-align:center}
 @keyframes up{from{opacity:0;transform:translateY(-12px)}}
 .bb{height:9px;border-radius:9px;background:rgba(255,255,255,.07);overflow:hidden}
 .bb i{display:block;height:100%}
-.log{font-size:12px;color:var(--dim);line-height:1.9;max-height:280px;overflow-y:auto;padding-right:6px}
+.log{font-size:12px;color:var(--dim);line-height:1.9;max-height:280px;overflow-y:auto;padding-right:6px;overflow-wrap:anywhere}
 .log b{color:var(--txt)}
 .sep{height:1px;background:var(--line);margin:12px 0}
 .ach{border:1px solid var(--line);border-radius:10px;padding:10px;font-size:12px;background:rgba(255,255,255,.03);opacity:.4}
 .ach.got{opacity:1;border-color:rgba(216,185,108,.5)}
-.pet{display:flex;gap:16px;align-items:center}
-.pavt{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:54px;border:2px solid var(--line);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.14),rgba(0,0,0,.45))}
-.quote{font-size:13px;color:var(--gold2);font-style:italic;line-height:1.9}
+.pet{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pavt{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:54px;border:2px solid var(--line);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.14),rgba(0,0,0,.45));flex:none}
+.quote{font-size:13px;color:var(--gold2);font-style:italic;line-height:1.9;overflow-wrap:anywhere}
 ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:rgba(216,185,108,.28);border-radius:8px}
-@media(max-width:860px){.app{grid-template-columns:1fr;grid-template-rows:auto 1fr}.side{flex-direction:column;border-right:none;border-bottom:1px solid var(--line);max-height:46vh}nav{flex-direction:row;overflow-x:auto}nav button{white-space:nowrap}main{padding:16px 13px 50px}}
+@media(max-width:860px){
+html,body{height:auto;min-height:100%}
+body{overflow-x:hidden;overflow-y:auto}
+.app{display:block;height:auto;min-height:100vh}
+.side{display:block;border-right:none;border-bottom:1px solid var(--line);overflow:visible}
+.logo{padding:10px 14px 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.logo h1{font-size:17px;letter-spacing:3px}
+.logo p{margin:0;font-size:10px}
+.stat{padding:8px 14px}
+.res{grid-template-columns:repeat(3,1fr);padding:8px 10px;gap:5px;font-size:11px}
+.res div{padding:4px 6px}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:40;flex-direction:row;flex:none;padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:2px;overflow-x:auto;background:rgba(10,14,20,.97);border-top:1px solid var(--line)}
+nav button{flex:1 0 auto;white-space:nowrap;text-align:center;padding:9px 11px;font-size:13px;letter-spacing:1px}
+.foot{flex-direction:row;justify-content:space-between;align-items:center;padding:7px 14px;border-top:none}
+main{overflow:visible;padding:14px 12px calc(84px + env(safe-area-inset-bottom))}
+.card{padding:13px;backdrop-filter:none}
+.g2{grid-template-columns:1fr}
+.g3,.g4{grid-template-columns:repeat(2,1fr)}
+input,select,textarea{font-size:16px}
+h2.t{font-size:19px;letter-spacing:3px}
+.pavt{width:84px;height:84px;font-size:40px}
+.md{padding:16px;width:94%}
+#toast{top:12px}}
 </style></head><body>
 <canvas id="bg"></canvas>
 <div class="app"><aside class="side">
 <div class="logo"><h1>塵間修仙錄</h1><p>REAL EFFORT · IMMORTAL PATH</p></div>
 <div class="stat" id="sd"></div><div class="res" id="rd"></div>
 <nav id="nv"></nav>
-<div class="foot"><div class="row" style="justify-content:space-between"><span id="rtl">閉關模式</span><button class="btn s" data-a="retreat">切換</button></div><span id="sv">自動存檔</span></div>
+<div class="foot"><div class="row" style="justify-content:space-between;gap:10px"><span id="rtl">閉關模式</span><button class="btn s" data-a="retreat">切換</button></div><span id="sv">自動存檔</span></div>
 </aside><main><div class="wrap" id="view"></div></main></div>
 <div class="ov" id="ov"><div class="md" id="mdc"></div></div>
-<div class="ov" id="tov"><div style="text-align:center"><div class="ring" id="ring"></div><div id="tinfo" style="margin:14px 0;color:#93a3b5;font-size:13px;letter-spacing:2px"></div><div class="row" style="justify-content:center"><button class="btn" data-a="tpause">暫停</button><button class="btn p" data-a="tdone">提前結束</button><button class="btn" data-a="tcancel">放棄</button></div><p style="margin-top:14px;font-size:11.5px;color:#64748b">靈氣隨呼吸流轉。中斷亦按已完成比例結算，不扣修為。</p></div></div>
+<div class="ov" id="tov"><div style="text-align:center;padding:0 12px"><div class="ring" id="ring"></div><div id="tinfo" style="margin:14px 0;color:#93a3b5;font-size:13px;letter-spacing:2px"></div><div class="row" style="justify-content:center"><button class="btn" data-a="tpause">暫停</button><button class="btn p" data-a="tdone">提前結束</button><button class="btn" data-a="tcancel">放棄</button></div><p style="margin-top:14px;font-size:11.5px;color:#64748b">靈氣隨呼吸流轉。中斷亦按已完成比例結算，不扣修為。</p></div></div>
 <div id="toast"></div>
 <script>
-const LS="chenjian_xianlu_full_v1";
-const REALMS=[{n:"凡人",need:80,pow:6,u:"開啟修行、尋寶與洞府靜室"},{n:"引氣",need:220,pow:13,u:"解鎖靈寵契約"},{n:"煉氣",need:520,pow:24,u:"解鎖洞府靈田"},{n:"築基",need:1100,pow:42,u:"解鎖秘境「失語古城」"},{n:"金丹",need:2200,pow:72,u:"解鎖煉器房與定向兌換"},{n:"元嬰",need:4200,pow:118,u:"解鎖靈寵進化"},{n:"化神",need:7600,pow:185,u:"本命法寶增一銘文位"},{n:"煉虛",need:13000,pow:280,u:"解鎖道友共修"},{n:"合體",need:21000,pow:410,u:"解鎖匠神遺窟深層"},{n:"大乘",need:34000,pow:620,u:"解鎖天外靈墟"},{n:"飛升",need:1e9,pow:900,u:"長生路遠，與汝同行"}];
+const LS="chenjian_xianlu_full_v1",VER=2;
+const REALMS=[{n:"凡人",need:80,pow:6,u:"開啟修行、尋寶與洞府靜室"},{n:"引氣",need:220,pow:13,u:"解鎖靈寵契約"},{n:"煉氣",need:520,pow:24,u:"解鎖洞府靈田"},{n:"築基",need:1100,pow:42,u:"解鎖秘境「失語古城」"},{n:"金丹",need:2200,pow:72,u:"解鎖煉器房與定向兌換"},{n:"元嬰",need:4200,pow:118,u:"解鎖靈寵進化"},{n:"化神",need:7600,pow:185,u:"本命法寶增一銘文位"},{n:"煉虛",need:13000,pow:280,u:"解鎖道友共修（自此境起才開始累積）"},{n:"合體",need:21000,pow:410,u:"解鎖匠神遺窟深層"},{n:"大乘",need:34000,pow:620,u:"解鎖天外靈墟"},{n:"飛升",need:1e9,pow:900,u:"長生路遠，與汝同行"}];
 const BR={dao:{n:"悟道",c:"#8ab4ff",e:"閱讀、理論、理解新概念"},calc:{n:"推演",c:"#9be6c4",e:"下棋、數學、程式、解難"},lang:{n:"通文",c:"#ffc48a",e:"日文、語言、寫作"},craft:{n:"匠心",c:"#d7a8ff",e:"繪畫、音樂、製作、設計"},vital:{n:"養元",c:"#ffe08a",e:"運動、整理、規劃休息"}};
 const TYPES={focus:{n:"專注型"},result:{n:"成果型"},practice:{n:"練習型"},plan:{n:"計劃型"}};
 const TIERS=[null,{n:"微修",e:6,s:2},{n:"日課",e:15,s:5},{n:"精修",e:30,s:10},{n:"苦修",e:55,s:18},{n:"大願",e:120,s:40}];
@@ -146,7 +170,7 @@ const ACHS=[
 {id:"a1",n:"初入塵間",d:"完成第一次修行",c:s=>s.st.tasks>=1,g:"🌱",dn:"初心幼苗"},
 {id:"a2",n:"日課不輟",d:"累積修行 10 次",c:s=>s.st.tasks>=10,g:"🏮",dn:"靜室長明燈"},
 {id:"a3",n:"百煉成形",d:"累積修行 100 次",c:s=>s.st.tasks>=100,g:"🗿",dn:"百煉石"},
-{id:"a4",n:"千刻專注",d:"累積專注 1000 分鐘",c:s=>s.st.min>=1000,g:"⏳",dn:"流光沙漏"},
+{id:"a4",n:"千刻專注",d:"累積修行 1000 分鐘",c:s=>s.st.min>=1000,g:"⏳",dn:"流光沙漏"},
 {id:"a5",n:"通文初成",d:"通文支脈 300",c:s=>s.br.lang>=300,g:"🎴",dn:"和風符燈"},
 {id:"a6",n:"推演入微",d:"推演支脈 300",c:s=>s.br.calc>=300,g:"🧩",dn:"算籌架"},
 {id:"a7",n:"悟道有得",d:"悟道支脈 300",c:s=>s.br.dao>=300,g:"📖",dn:"藏卷架"},
@@ -164,19 +188,41 @@ const ACHS=[
 {id:"a19",n:"本命銘文",d:"刻下第一道銘文",c:s=>s.fate.length>=1,g:"✨",dn:"銘文燭台"},
 {id:"a20",n:"閉關歸來",d:"使用過閉關模式",c:s=>s.st.retreat>=1,g:"🚪",dn:"閉關石門"},
 {id:"a21",n:"持久之道",d:"累積修行 365 次",c:s=>s.st.tasks>=365,g:"🌳",dn:"道心古樹"},
-{id:"a22",n:"滿架琳瑯",d:"收藏 3 件五星法器",c:s=>Object.keys(s.wp).filter(i=>W(i).r===5).length>=3,g:"👑",dn:"寶光頂冠"}];
+{id:"a22",n:"滿架琳瑯",d:"收藏 3 件五星法器",c:s=>Object.keys(s.wp).filter(i=>W(i)&&W(i).r===5).length>=3,g:"👑",dn:"寶光頂冠"}];
 const SECTS=[{n:"重修宗門藏書閣",goal:400,r:{g:"📜",n:"宗門藏書匾"}},{n:"開鑿山門石階",goal:700,r:{g:"🪜",n:"千級石階"}},{n:"栽植靈脈竹海",goal:1100,r:{g:"🎍",n:"靈脈竹海"}},{n:"重鑄宗門鐘",goal:1600,r:{g:"🔔",n:"宗門巨鐘"}},{n:"編纂共修道典",goal:2400,r:{g:"📘",n:"共修道典"}}];
 const NPCS=["雲岫","阿照","半山","子衿","老樊","青禾"];
 const DEMONS=[{q:"我不知道從哪裏開始",s:"只做第一步：打開書本或題目，做第一小題。開始本身就是修行。",t:"開卷第一題",m:6},{q:"我怕做不好",s:"先寫草稿，允許不完美。寫下三行，就算完成。",t:"草稿三行",m:8},{q:"我覺得太多",s:"把它切成三塊，今天只動第一塊。其餘留給明天的你。",t:"切第一塊",m:12},{q:"我今天很累",s:"改為輕修：五分鐘整理桌面，或讀一頁書。休息不是失敗。",t:"輕修五分鐘",m:5}];
 const now=()=>Date.now(),dkey=t=>{const d=new Date(t||now());return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
 const rnd=(a,b)=>a+Math.random()*(b-a),ri=(a,b)=>Math.floor(rnd(a,b+1)),pick=a=>a[Math.floor(Math.random()*a.length)],cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const W=id=>WEAPONS.find(w=>w.id===id),P=id=>PETS.find(p=>p.id===id),RG=id=>REGIONS.find(r=>r.id===id);
+const wkey=k=>{const d=new Date(k+"T00:00:00");d.setDate(d.getDate()-((d.getDay()+6)%7));return dkey(d.getTime())};
+const tid=()=>"t"+now()+Math.random().toString(36).slice(2,6);
 function def(){const ex={};REGIONS.forEach(r=>ex[r.id]={p:0,cl:false});const cv={};ROOMS.forEach(r=>cv[r.id]=r.id==="jing"?1:0);
-return{v:1,born:now(),seen:now(),day:dkey(),realm:0,exp:0,stone:120,shard:0,wood:0,iron:0,soul:2,ap:5,br:{dao:0,calc:0,lang:0,craft:0,vital:0},tasks:[],logs:[],wp:{},pt:{},eqW:null,eqP:null,cv:cv,ex:ex,exlog:[],decor:[],achs:[],fate:[],vow:null,pity:0,ppity:0,retreat:false,farm:1,sect:{i:0,p:0,np:{},done:0},st:{tasks:0,min:0,days:[],plans:0,retreat:0,draws:0,wins:0},ui:{tab:"today"},timer:null}}
+return{v:VER,born:now(),seen:now(),day:dkey(),realm:0,exp:0,stone:120,shard:0,wood:0,iron:0,soul:2,ap:5,br:{dao:0,calc:0,lang:0,craft:0,vital:0},tasks:[],logs:[],wp:{},pt:{},eqW:null,eqP:null,cv:cv,ex:ex,exlog:[],decor:[],achs:[],fate:[],vow:null,vopt:null,pity:0,ppity:0,retreat:false,farm:0,sect:{i:0,p:0,np:{},done:0,on:0},st:{tasks:0,min:0,days:[],plans:0,retreat:0,draws:0,wins:0},ui:{tab:"today"},timer:null}}
 let S=def();
+function fresh(){const s=def();s.wp.w1={lv:1};s.eqW="w1";s.pt.p4={bond:10,evo:null,name:null};s.eqP="p4";PRESETS.slice(0,4).forEach(p=>s.tasks.push({id:tid(),name:p.name,type:p.type,tier:p.tier,br:p.br,min:p.min,rep:p.rep,steps:[],done:false,last:null}));return s}
+/* 存檔與版本繼承：舊版（無 v 或 v1）存檔會自動升級，所有紀錄保留 */
+function migrate(o){const d=def(),s=Object.assign(d,o);
+s.br=Object.assign(def().br,o.br||{});s.st=Object.assign(def().st,o.st||{});s.ui=Object.assign({tab:"today"},o.ui||{});s.cv=Object.assign(def().cv,o.cv||{});s.ex=Object.assign(def().ex,o.ex||{});
+s.sect=Object.assign({i:0,p:0,np:{},done:0,on:0},o.sect||{});
+["tasks","logs","decor","achs","fate","exlog"].forEach(k=>{if(!Array.isArray(s[k]))s[k]=[]});
+if(!Array.isArray(s.st.days))s.st.days=[];
+["wp","pt"].forEach(k=>{if(!s[k]||typeof s[k]!=="object")s[k]={}});
+s.tasks.forEach(t=>{if(!Array.isArray(t.steps))t.steps=[];if(!t.rep)t.rep="none";if(t.type==="plan")t.rep="none"});
+if((o.v||1)<2){
+s.tasks.forEach(t=>{if((t.type==="result"||t.type==="practice")&&t.min){const bad=Math.round(t.min*.8);s.logs.forEach(l=>{if(l.n===t.name&&l.min===bad&&bad!==t.min){s.st.min+=t.min-l.min;l.min=t.min}})}});
+s.tasks.forEach(t=>{if(t.done&&!t.last){const l=s.logs.find(x=>x.n===t.name);t.last=l?dkey(l.t):"1970-01-01"}});
+s.sect.p=0;s.sect.np={};s.sect.on=s.realm>=7?now():0;
+if(!s.cv.tian)s.farm=0}
+if(s.realm>=7&&!s.sect.on)s.sect.on=now();
+if(s.realm<7){s.sect.p=0;s.sect.np={};s.sect.on=0}
+s.v=VER;
+s.tasks=s.tasks.filter(t=>!(t.rep==="none"&&t.done&&t.last!==dkey()));
+return s}
 function save(){try{localStorage.setItem(LS,JSON.stringify(S));document.getElementById("sv").textContent="已存檔 "+new Date().toLocaleTimeString("zh-Hant",{hour:"2-digit",minute:"2-digit"})}catch(e){}}
-function load(){try{const r=localStorage.getItem(LS);if(!r)return false;const o=JSON.parse(r);S=Object.assign(def(),o);S.br=Object.assign(def().br,o.br||{});S.st=Object.assign(def().st,o.st||{});S.ui=Object.assign({tab:"today"},o.ui||{});REGIONS.forEach(r=>{if(!S.ex[r.id])S.ex[r.id]={p:0,cl:false}});ROOMS.forEach(r=>{if(S.cv[r.id]==null)S.cv[r.id]=0});return true}catch(e){return false}}
-function toast(m){const t=document.getElementById("toast"),d=document.createElement("div");d.textContent=m;t.appendChild(d);setTimeout(()=>d.remove(),2600)}
+function load(){try{const r=localStorage.getItem(LS);if(!r)return false;S=migrate(JSON.parse(r));return true}catch(e){return false}}
+function toast(m){const t=document.getElementById("toast"),d=document.createElement("div");d.textContent=m;t.appendChild(d);setTimeout(()=>d.remove(),2800)}
 function modal(h){document.getElementById("mdc").innerHTML=h;document.getElementById("ov").classList.add("on")}
 function closeM(){document.getElementById("ov").classList.remove("on")}
 function eqW(){return S.eqW&&S.wp[S.eqW]?Object.assign({},W(S.eqW),{lv:S.wp[S.eqW].lv}):null}
@@ -191,96 +237,113 @@ function bondMul(){return 1+S.cv.shou*.06+pasV("bond")}
 function apMul(){return 1+pasV("ap")}
 function power(){let p=REALMS[S.realm].pow;const w=eqW();if(w)p+=w.atk+(w.lv-1)*w.r*2;const pt=eqP();if(pt)p+=P(pt.id).atk+Math.floor((pt.bond||0)/12);p+=Math.floor((S.br.dao+S.br.calc+S.br.lang+S.br.craft+S.br.vital)/60);return Math.round(p*(1+pasV("atk")))}
 function stage(){const n=REALMS[S.realm].need,f=S.exp/n;return f>=1?"圓滿":f>=.66?"後期":f>=.33?"中期":"初期"}
+/* 任務狀態：單次／每日／每週 */
+function isDone(t){if(t.rep==="none")return !!t.done;if(!t.last)return false;if(t.rep==="weekly")return wkey(t.last)===wkey(dkey());return t.last===dkey()}
+function archiveTasks(){const n=S.tasks.length;S.tasks=S.tasks.filter(t=>!(t.rep==="none"&&t.done&&t.last!==dkey()));return n!==S.tasks.length}
+/* 獎勵計算：ratio = 完成比例（手動完成=1，計時中斷=已完成比例） */
 function reward(t,ratio){const T=TIERS[t.tier];let e=T.e,s=T.s;if(t.type==="focus"){const m=t.min||25;e=e*(.55+.45*cl(m/25,.4,2.2));s=s*(.6+.4*cl(m/25,.4,2))}
 if(t.type==="result")e*=1.12;if(t.type==="practice")e*=1.06;
 e*=expMul();s*=stoneMul();const r=ratio==null?1:ratio;
 return{exp:Math.max(1,Math.round(e*r)),stone:Math.max(1,Math.round(s*r)),ap:(t.tier>=3?2:1),br:Math.max(1,Math.round(e*r*.5))}}
 function addLog(o){S.logs.unshift(o);if(S.logs.length>600)S.logs.length=600}
-function doTask(t,ratio,mins){const r=reward(t,ratio);S.exp+=r.exp;S.stone+=r.stone;S.br[t.br]+=r.br;S.ap=cl(S.ap+Math.round(r.ap*apMul()),0,30);
-const m=mins!=null?mins:(t.type==="focus"?(t.min||25):Math.round((t.min||20)*.8));S.st.min+=Math.round(m*(ratio==null?1:ratio));S.st.tasks++;
+function vowAdd(t,m){const v=S.vow;if(!v)return;if(v.k==="count")v.p+=1;else if(v.k==="br"){if(t.br===v.arg)v.p+=1}else if(v.k==="tier"){if(t.tier>=v.arg)v.p+=1}else if(v.k==="min")v.p+=m}
+/* mins = 實際記錄分鐘：計時=真實經過分鐘；手動完成=你填的預計分鐘（原值，不打折） */
+function doTask(t,ratio,mins,sub){ratio=ratio==null?1:ratio;
+const r=reward(t,ratio),m=mins!=null?mins:(t.min||(t.type==="focus"?25:20));
+S.exp+=r.exp;S.stone+=r.stone;S.br[t.br]+=r.br;
+S.ap=cl(S.ap+Math.max(ratio>=.5?1:0,Math.round(r.ap*apMul()*ratio)),0,30);
+S.st.min+=m;S.st.tasks++;
 const dk=dkey();if(!S.st.days.includes(dk))S.st.days.push(dk);
-let extra=[];if(Math.random()<.25+t.tier*.05){const g=pick(["wood","iron"]);S[g]+=ri(1,1+t.tier);extra.push((g==="wood"?"靈木":"玄鐵")+"×"+ri(1,1+t.tier))}
-if(t.tier>=3&&Math.random()<.3){S.soul++;extra.push("獸魂玉×1")}
-const sh=Math.round(t.tier*2*shardMul());S.shard+=sh;
-const p=eqP();if(p){let b=ri(3,7)+t.tier;if(P(p.id).b===t.br)b+=3;S.pt[p.id].bond=Math.min(200,(S.pt[p.id].bond||0)+Math.round(b*bondMul()))}
-S.sect.p+=t.tier*3;
-if(S.vow){S.vow.p+=vowHit(S.vow,t,m)?1:0;if(S.vow.k==="min")S.vow.p=Math.min(S.vow.goal,S.vow.p-1+Math.round(m*(ratio==null?1:ratio)))}
-addLog({t:now(),n:t.name,tier:t.tier,br:t.br,exp:r.exp,min:Math.round(m*(ratio==null?1:ratio))});
-if(t.rep==="none"&&t.type!=="plan"){t.done=true}else{t.last=dkey()}
+let extra=[];if(Math.random()<(.25+t.tier*.05)*ratio){const g=pick(["wood","iron"]),q=ri(1,1+t.tier);S[g]+=q;extra.push((g==="wood"?"靈木":"玄鐵")+"×"+q)}
+if(t.tier>=3&&Math.random()<.3*ratio){S.soul++;extra.push("獸魂玉×1")}
+const sh=Math.round(t.tier*2*shardMul()*ratio);S.shard+=sh;
+const p=eqP();if(p){let b=ri(3,7)+t.tier;if(P(p.id).b===t.br)b+=3;S.pt[p.id].bond=Math.min(200,(S.pt[p.id].bond||0)+Math.max(1,Math.round(b*bondMul()*ratio)))}
+if(S.realm>=7&&S.sect.on)S.sect.p+=Math.round(t.tier*3*ratio);
+vowAdd(t,m);
+addLog({t:now(),n:t.name,tier:t.tier,br:t.br,exp:r.exp,min:m,ty:t.type});
+if(!sub){t.last=dk;if(t.rep==="none")t.done=true;if(t.type==="plan")S.st.plans++}
 checkAch();save();
 toast("修為 +"+r.exp+"　靈石 +"+r.stone+(sh?"　碎片 +"+sh:"")+(extra.length?"　"+extra.join(" "):""));
 if(S.exp>=REALMS[S.realm].need&&!S.vow)toast("修為已足，可往「角色修行」立下突破之願。");
-render()}
-function vowHit(v,t,m){if(v.k==="br")return t.br===v.arg;if(v.k==="tier")return t.tier>=v.arg;if(v.k==="count")return true;if(v.k==="min")return true;return true}
+render();
+if(!sub&&t.type==="plan")modal("<h3>大願達成</h3><p class='quote'>「"+esc(t.name)+"」</p><div class='sep'></div><p class='d'>可在本命法寶刻下一道銘文，永久留下這段經歷。</p><div><label>銘文內容</label><input id='ins' value='"+esc(t.name)+"'></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='inssave'>刻下</button><button class='btn' data-a='close'>之後再說</button></div>")}
 function checkAch(){ACHS.forEach(a=>{if(!S.achs.includes(a.id)&&a.c(S)){S.achs.push(a.id);S.decor.push({g:a.g,n:a.dn,from:a.n,t:now()});S.stone+=60;toast("✦ 成就："+a.n+"　獲得裝飾「"+a.dn+"」")}})}
-function dayTick(){const dk=dkey();if(S.day===dk)return;const away=Math.max(1,Math.round((now()-(S.seen||now()))/864e5));S.day=dk;S.farm=Math.min(3,S.farm+Math.min(3,away));
-let add=0;NPCS.forEach(n=>{const c=ri(4,16)*Math.min(3,away);S.sect.np[n]=(S.sect.np[n]||0)+c;add+=c});S.sect.p+=add;
-if(away>=1){const p=eqP();modal("<h3>歡迎回來</h3><p class='quote'>"+(p?"「"+P(p.id).l+"」—— "+(p.name||P(p.id).n):"洞府門未鎖，燈仍亮著。")+"</p><div class='sep'></div><p class='d'>你離開了約 "+away+" 日。沒有任何進度被扣除，靈田替你累積了收成，道友也推進了共修工程 "+add+" 點。<br>休息不是修仙失敗，回來也不需要補交欠下的任務。</p><div class='row'><button class='btn p' data-a='close'>繼續修行</button></div>")}}
+function dayTick(){const dk=dkey();if(S.day===dk)return;
+const gap=Math.max(1,Math.round((new Date(dk+"T00:00:00")-new Date(S.day+"T00:00:00"))/864e5)||1);S.day=dk;
+if(S.cv.tian>0)S.farm=Math.min(3,S.farm+Math.min(3,gap));
+let add=0;if(S.realm>=7&&S.sect.on){NPCS.forEach(n=>{const c=ri(4,16)*Math.min(3,gap);S.sect.np[n]=(S.sect.np[n]||0)+c;add+=c});S.sect.p+=add}
+archiveTasks();save();
+if(gap>=2){const p=eqP();modal("<h3>歡迎回來</h3><p class='quote'>"+(p?"「"+esc(P(p.id).l)+"」—— "+esc(p.name||P(p.id).n):"洞府門未鎖，燈仍亮著。")+"</p><div class='sep'></div><p class='d'>你離開了約 "+gap+" 日。沒有任何進度被扣除"+(S.cv.tian>0?"，靈田替你累積了收成":"")+(add?"，道友也推進了共修工程 "+add+" 點":"")+"。<br>休息不是修仙失敗，回來也不需要補交欠下的任務。</p><div class='row'><button class='btn p' data-a='close'>繼續修行</button></div>")}}
 function sectProj(){return SECTS[Math.min(S.sect.i,SECTS.length-1)]}
 function fmt(n){return n>=1e4?(n/1e4).toFixed(2)+"萬":n}
 /* ---------- 側欄 ---------- */
-const TABS=[["today","今日修行"],["char","角色修行"],["cave","洞　　府"],["pets","靈　　寵"],["world","天　　下"],["treasure","寶　　閣"],["journal","修行手札"]];
+const TABS=[["today","今日修行"],["char","角色修行"],["cave","洞府"],["pets","靈寵"],["world","天下"],["treasure","寶閣"],["journal","修行手札"]];
 function sidebar(){const r=REALMS[S.realm],f=Math.min(1,S.exp/r.need);
 document.getElementById("sd").innerHTML="<div class='realm'><b>"+r.n+"</b><span>"+stage()+"　戰力 "+power()+"</span></div><div class='bar'><i style='width:"+(f*100).toFixed(1)+"%'></i></div><div class='sm'><span>修為 "+fmt(S.exp)+" / "+fmt(r.need)+"</span><span>"+(f>=1?"可突破":Math.round(f*100)+"%")+"</span></div>";
 document.getElementById("rd").innerHTML=[["靈石",S.stone],["碎片",S.shard],["獸魂玉",S.soul],["行動點",S.ap+"/30"],["靈木",S.wood],["玄鐵",S.iron]].map(x=>"<div><span>"+x[0]+"</span><b>"+fmt(x[1])+"</b></div>").join("");
+if(S.retreat&&S.ui.tab==="treasure")S.ui.tab="today";
 document.getElementById("nv").innerHTML=TABS.filter(t=>!(S.retreat&&t[0]==="treasure")).map(t=>"<button class='"+(S.ui.tab===t[0]?"on":"")+"' data-a='tab' data-v='"+t[0]+"'>"+t[1]+"</button>").join("");
 document.getElementById("rtl").innerHTML=S.retreat?"閉關中 ‧ 已靜音":"閉關模式 ‧ 關"}
 /* ---------- 今日修行 ---------- */
-function vToday(){const dk=dkey(),av=S.tasks.filter(t=>!t.done&&t.last!==dk),dn=S.tasks.filter(t=>t.done||t.last===dk);
+function vToday(){const dk=dkey(),av=S.tasks.filter(t=>!isDone(t)),dn=S.tasks.filter(t=>isDone(t)&&t.last===dk),wkd=S.tasks.filter(t=>t.rep==="weekly"&&isDone(t)&&t.last!==dk).length;
+const tl=S.logs.filter(l=>dkey(l.t)===dk),tm=tl.reduce((a,b)=>a+(b.min||0),0);
 return "<h2 class='t'>今日修行</h2><p class='d'>今天準備做甚麼？選一項，開始就好。中斷亦按比例結算，不扣修為。</p>"+
-"<div class='card'><h3>範本 ‧ 一鍵加入</h3><div class='row'>"+PRESETS.map((p,i)=>"<button class='btn s' data-a='preset' data-v='"+i+"'>＋ "+p.name+"</button>").join("")+"</div><div class='sep'></div><h3>自訂任務</h3><div class='grid g3'><div><label>任務名稱</label><input id='f_n' placeholder='例：複習日文動詞變化'></div><div><label>形式</label><select id='f_t'>"+Object.entries(TYPES).map(([k,v])=>"<option value='"+k+"'>"+v.n+"</option>").join("")+"</select></div><div><label>自訂難度</label><select id='f_d'>"+TIERS.map((t,i)=>i?"<option value='"+i+"'"+(i===2?" selected":"")+">"+t.n+"</option>":"").join("")+"</select></div><div><label>修行支脈</label><select id='f_b'>"+Object.entries(BR).map(([k,v])=>"<option value='"+k+"'>"+v.n+"（"+v.e+"）</option>").join("")+"</select></div><div><label>預計分鐘</label><input id='f_m' type='number' value='25' min='1' max='300'></div><div><label>重複</label><select id='f_r'><option value='none'>單次</option><option value='daily'>每日</option><option value='weekly'>每週</option></select></div></div><div style='margin-top:10px'><label>（計劃型大願）里程碑，每行一項</label><textarea id='f_s' rows='3' placeholder='例：&#10;讀完第一章&#10;整理筆記&#10;做練習題'></textarea></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='add'>立此修行</button><span class='tag'>大願會分段派獎，不會做很久卻無進度</span></div></div>"+
-"<div class='card' style='margin-top:12px'><h3>待修行 <span class='tag'>"+av.length+" 項</span></h3>"+(av.length?"<div class='grid g2'>"+av.map(tcard).join("")+"</div>":"<p class='d'>暫無任務。先加一項「微修」也很好——開始本身就是修行。</p>")+"</div>"+
+"<div class='card'><h3>範本 ‧ 一鍵加入</h3><div class='row'>"+PRESETS.map((p,i)=>"<button class='btn s' data-a='preset' data-v='"+i+"'>＋ "+p.name+"</button>").join("")+"</div><div class='sep'></div><h3>自訂任務</h3><div class='grid g3'><div><label>任務名稱</label><input id='f_n' placeholder='例：複習日文動詞變化'></div><div><label>形式</label><select id='f_t'>"+Object.entries(TYPES).map(([k,v])=>"<option value='"+k+"'>"+v.n+"</option>").join("")+"</select></div><div><label>自訂難度</label><select id='f_d'>"+TIERS.map((t,i)=>i?"<option value='"+i+"'"+(i===2?" selected":"")+">"+t.n+"</option>":"").join("")+"</select></div><div><label>修行支脈</label><select id='f_b'>"+Object.entries(BR).map(([k,v])=>"<option value='"+k+"'>"+v.n+"（"+v.e+"）</option>").join("")+"</select></div><div><label>預計分鐘（60 = 一小時）</label><input id='f_m' type='number' inputmode='numeric' value='25' min='1' max='600'></div><div><label>重複</label><select id='f_r'><option value='none'>單次</option><option value='daily'>每日</option><option value='weekly'>每週</option></select></div></div><div style='margin-top:10px'><label>（計劃型大願）里程碑，每行一項</label><textarea id='f_s' rows='3' placeholder='例：&#10;讀完第一章&#10;整理筆記&#10;做練習題'></textarea></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='add'>立此修行</button><span class='tag'>大願會分段派獎，不會做很久卻無進度</span></div></div>"+
+"<div class='card' style='margin-top:12px'><h3>待修行 <span class='tag'>"+av.length+" 項</span></h3>"+(av.length?"<div class='grid g2'>"+av.map(tcard).join("")+"</div>":"<p class='d'>暫無任務。先加一項「微修」也很好——開始本身就是修行。</p>")+(wkd?"<p class='d' style='margin:10px 0 0'>另有 "+wkd+" 項每週修行本週已完成，下週再現。</p>":"")+"</div>"+
 "<div class='card' style='margin-top:12px'><h3>心魔 ‧ 卡住了？</h3><p class='d'>選一句最接近你此刻的話。擊退心魔靠的是開始行動，不是增加工時。</p><div class='row'>"+DEMONS.map((d,i)=>"<button class='btn s' data-a='demon' data-v='"+i+"'>"+d.q+"</button>").join("")+"</div><div id='dmo' style='margin-top:10px'></div></div>"+
-(dn.length?"<div class='card' style='margin-top:12px'><h3>今日已完成 / 已歸檔</h3><div class='grid g2'>"+dn.slice(0,12).map(tcard).join("")+"</div></div>":"")}
-function tcard(t){const r=reward(t),dn=t.done||t.last===dkey();
-let steps="";if(t.type==="plan"&&t.steps&&t.steps.length)steps="<div style='margin:8px 0;font-size:12.5px'>"+t.steps.map((s,i)=>"<div class='row' style='gap:6px;margin:3px 0'><button class='btn s' data-a='step' data-v='"+t.id+"|"+i+"' "+(s.done?"disabled":"")+">"+(s.done?"✓":"○")+"</button><span style='opacity:"+(s.done?.5:1)+"'>"+s.t+"</span></div>").join("")+"</div>";
-return "<div class='task"+(dn?" dn":"")+"'><h4>"+t.name+"</h4><div class='row'><span class='tag'>"+TIERS[t.tier].n+"</span><span class='tag'>"+TYPES[t.type].n+"</span><span class='tag' style='color:"+BR[t.br].c+"'>"+BR[t.br].n+"</span><span class='tag'>"+(t.min||25)+" 分</span><span class='tag'>"+(t.rep==="daily"?"每日":t.rep==="weekly"?"每週":"單次")+"</span></div>"+steps+"<div class='rw'>預覽：修為 +"+r.exp+"　靈石 +"+r.stone+"　"+BR[t.br].n+" +"+r.br+"　行動點 +"+r.ap+"</div><div class='row'>"+(dn?"<span class='tag'>已完成，明日再來</span>":(t.type==="focus"?"<button class='btn p' data-a='start' data-v='"+t.id+"'>開始專注</button>":"")+"<button class='btn' data-a='fin' data-v='"+t.id+"'>標記完成</button>")+"<button class='btn s' data-a='del' data-v='"+t.id+"'>刪除</button></div></div>"}
+(dn.length?"<div class='card' style='margin-top:12px'><h3>今日已完成 <span class='tag'>"+tl.length+" 次 ‧ "+tm+" 分</span></h3><div class='grid g2'>"+dn.map(tcard).join("")+"</div><p class='d' style='margin:10px 0 0'>往日完成的修行已收錄於「洞府 ‧ 藏書閣」與「修行手札」。</p></div>":"")}
+function tcard(t){const r=reward(t),dn=isDone(t);
+let steps="";if(t.type==="plan"&&t.steps&&t.steps.length)steps="<div style='margin:8px 0;font-size:12.5px'>"+t.steps.map((s,i)=>"<div class='row' style='gap:6px;margin:3px 0;flex-wrap:nowrap'><button class='btn s' data-a='step' data-v='"+t.id+"|"+i+"' "+(s.done?"disabled":"")+">"+(s.done?"✓":"○")+"</button><span style='opacity:"+(s.done?.5:1)+";overflow-wrap:anywhere'>"+esc(s.t)+"</span></div>").join("")+"</div>";
+const hasSteps=t.type==="plan"&&t.steps&&t.steps.length;
+return "<div class='task"+(dn?" dn":"")+"'><h4>"+esc(t.name)+"</h4><div class='row'><span class='tag'>"+TIERS[t.tier].n+"</span><span class='tag'>"+TYPES[t.type].n+"</span><span class='tag' style='color:"+BR[t.br].c+"'>"+BR[t.br].n+"</span><span class='tag'>"+(t.min||25)+" 分</span><span class='tag'>"+(t.rep==="daily"?"每日":t.rep==="weekly"?"每週":"單次")+"</span></div>"+steps+"<div class='rw'>預覽：修為 +"+r.exp+"　靈石 +"+r.stone+"　"+BR[t.br].n+" +"+r.br+"　行動點 +"+r.ap+"</div><div class='row'>"+(dn?"<span class='tag'>已完成</span>":(t.type==="focus"?"<button class='btn p' data-a='start' data-v='"+t.id+"'>開始專注</button>":"")+(hasSteps?"":"<button class='btn' data-a='fin' data-v='"+t.id+"'>標記完成</button>"))+"<button class='btn s' data-a='del' data-v='"+t.id+"'>刪除</button></div></div>"}
 /* ---------- 角色修行 ---------- */
 function vChar(){const r=REALMS[S.realm],nx=REALMS[S.realm+1],f=Math.min(1,S.exp/r.need),w=eqW(),p=eqP();
 const brs=Object.entries(BR).map(([k,v])=>{const mx=Math.max(100,...Object.values(S.br));return "<div style='margin-bottom:9px'><div class='sm' style='margin:0 0 4px'><span style='color:"+v.c+"'>"+v.n+"</span><span>"+fmt(S.br[k])+"</span></div><div class='bb'><i style='width:"+(S.br[k]/mx*100).toFixed(1)+"%;background:linear-gradient(90deg,"+v.c+"44,"+v.c+")'></i></div><div style='font-size:10.5px;color:#64748b;margin-top:3px'>"+v.e+"</div></div>"}).join("");
-let vow;if(S.vow){const d=S.vow.p>=S.vow.goal;vow="<div class='task'><h4>"+S.vow.d+"</h4><div class='bb' style='margin:8px 0'><i style='width:"+Math.min(100,S.vow.p/S.vow.goal*100)+"%;background:linear-gradient(90deg,#8a6b2a,#f3e0a8)'></i></div><div class='sm'><span>進度 "+Math.min(S.vow.p,S.vow.goal)+" / "+S.vow.goal+"</span><span>"+(d?"可渡劫突破":"不限日期、不會失敗")+"</span></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='bt' "+(d&&S.exp>=r.need?"":"disabled")+">渡劫突破 → "+(nx?nx.n:"飛升")+"</button><button class='btn s' data-a='vowdrop'>更換之願</button></div></div>"}
-else if(S.exp>=r.need){vow="<p class='d'>修為已足。選一項「突破之願」——它由你自己定義，不限期、不扣分。</p><div class='grid g2'>"+vows().map((v,i)=>"<div class='task'><h4>"+v.d+"</h4><div class='row' style='margin-top:8px'><button class='btn p' data-a='vowset' data-v='"+i+"'>立願</button></div></div>").join("")+"</div>"}
+let vow;if(S.vow){const d=S.vow.p>=S.vow.goal;vow="<div class='task'><h4>"+esc(S.vow.d)+"</h4><div class='bb' style='margin:8px 0'><i style='width:"+Math.min(100,S.vow.p/S.vow.goal*100)+"%;background:linear-gradient(90deg,#8a6b2a,#f3e0a8)'></i></div><div class='sm'><span>進度 "+Math.min(S.vow.p,S.vow.goal)+" / "+S.vow.goal+"</span><span>"+(d?"可渡劫突破":"不限日期、不會失敗")+"</span></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='bt' "+(d&&S.exp>=r.need?"":"disabled")+">渡劫突破 → "+(nx?nx.n:"飛升")+"</button><button class='btn s' data-a='vowdrop'>更換之願</button></div></div>"}
+else if(S.exp>=r.need){vow="<p class='d'>修為已足。選一項「突破之願」——它由你自己定義，不限期、不扣分。</p><div class='grid g2'>"+vopts().map((v,i)=>"<div class='task'><h4>"+esc(v.d)+"</h4><div class='row' style='margin-top:8px'><button class='btn p' data-a='vowset' data-v='"+i+"'>立願</button></div></div>").join("")+"</div>"}
 else vow="<p class='d'>距突破尚需修為 "+fmt(Math.ceil(r.need-S.exp))+"。修為足夠後可立下突破之願。</p>";
 const slots=1+Math.floor(S.realm/3);
 return "<h2 class='t'>角色修行</h2><p class='d'>境界只是其中一條線。真正記住你的是銘文、支脈與洞府。</p>"+
 "<div class='grid g2'><div class='card'><h3>當前境界</h3><div style='text-align:center;padding:10px 0'><div style='font-size:46px;letter-spacing:8px;color:var(--gold2);text-shadow:0 0 26px rgba(216,185,108,.45)' class='breathe'>"+r.n+"</div><div style='color:var(--dim);font-size:12px;margin-top:6px'>"+stage()+"　‧　戰力 "+power()+"</div></div><div class='bar'><i style='width:"+(f*100).toFixed(1)+"%'></i></div><div class='sm'><span>修為 "+fmt(S.exp)+" / "+fmt(r.need)+"</span><span>修為加成 ×"+expMul().toFixed(2)+"</span></div><div class='sep'></div><div style='font-size:12px;color:var(--dim);line-height:1.9'>本境所得："+r.u+"<br>"+(nx?"下一境：<b style='color:var(--gold2)'>"+nx.n+"</b>　"+nx.u:"已至路之盡頭，仍可繼續同行。")+"</div></div>"+
 "<div class='card'><h3>突破之願</h3>"+vow+"</div></div>"+
 "<div class='grid g2' style='margin-top:12px'><div class='card'><h3>五脈修行</h3>"+brs+"<div style='font-size:11px;color:#64748b'>支脈只用來形成個人風格。只專注一脈，也可長期修行。</div></div>"+
-"<div class='card'><h3>本命法寶 ‧ 問心玨 <span class='tag'>"+S.fate.length+" / "+slots+" 銘文</span></h3><p class='d'>每完成一項現實大願或突破，可刻下一道銘文。每道銘文永久 +1% 修為。</p>"+(S.fate.length?S.fate.map((x,i)=>"<div class='task' style='margin-bottom:7px'><div style='font-size:13px'>✦ "+x.t+"</div><div class='sm'><span>"+new Date(x.d).toLocaleDateString("zh-Hant")+"</span><span>+1% 修為</span></div></div>").join(""):"<p class='d' style='opacity:.6'>玨身尚白。它的價值不在稀有度，而在只有你有這段經歷。</p>")+(S.fate.length<slots?"<div class='row'><button class='btn' data-a='insc'>刻下銘文</button></div>":"")+"</div></div>"+
-"<div class='grid g2' style='margin-top:12px'><div class='card'><h3>隨身</h3><div class='grid g4'>"+(w?itcard(w,"w",true):"<div class='it'><div class='gl'>·</div><b>未佩法器</b><small>往寶閣尋寶</small></div>")+(p?"<div class='it r"+P(p.id).r+"'><div class='gl'>"+P(p.id).g+"</div><b>"+(p.name||P(p.id).n)+"</b><small>羈絆 "+(p.bond||0)+"</small></div>":"<div class='it'><div class='gl'>·</div><b>未契靈寵</b><small>往靈寵頁契約</small></div>")+"</div></div>"+
-"<div class='card'><h3>道友共修 "+(S.realm>=7?"":"<span class='tag'>煉虛境開啟</span>")+"</h3>"+(S.realm>=7?sectHTML():"<p class='d'>達煉虛境後，可與道友共同推進宗門工程。共修只計各自完成的修行，不公開誰最少、不設缺席懲罰。</p>")+"</div></div>"}
+"<div class='card'><h3>本命法寶 ‧ 問心玨 <span class='tag'>"+S.fate.length+" / "+slots+" 銘文</span></h3><p class='d'>每完成一項現實大願或突破，可刻下一道銘文。每道銘文永久 +1% 修為。</p>"+(S.fate.length?S.fate.map(x=>"<div class='task' style='margin-bottom:7px'><div style='font-size:13px;overflow-wrap:anywhere'>✦ "+esc(x.t)+"</div><div class='sm'><span>"+new Date(x.d).toLocaleDateString("zh-Hant")+"</span><span>+1% 修為</span></div></div>").join(""):"<p class='d' style='opacity:.6'>玨身尚白。它的價值不在稀有度，而在只有你有這段經歷。</p>")+(S.fate.length<slots?"<div class='row'><button class='btn' data-a='insc'>刻下銘文</button></div>":"")+"</div></div>"+
+"<div class='grid g2' style='margin-top:12px'><div class='card'><h3>隨身</h3><div class='grid g4'>"+(w?itcard(w,"w",true):"<div class='it'><div class='gl'>·</div><b>未佩法器</b><small>往寶閣尋寶</small></div>")+(p?"<div class='it r"+P(p.id).r+"'><div class='gl'>"+P(p.id).g+"</div><b>"+esc(p.name||P(p.id).n)+"</b><small>羈絆 "+(p.bond||0)+"</small></div>":"<div class='it'><div class='gl'>·</div><b>未契靈寵</b><small>往靈寵頁契約</small></div>")+"</div></div>"+
+"<div class='card'><h3>道友共修 "+(S.realm>=7?"":"<span class='tag'>煉虛境開啟</span>")+"</h3>"+(S.realm>=7?sectHTML():"<p class='d'>達煉虛境後，才會開始與道友共同推進宗門工程；在此之前不會累積任何進度。共修只計各自完成的修行，不公開誰最少、不設缺席懲罰。</p>")+"</div></div>"}
 function sectHTML(){const pj=sectProj(),f=Math.min(1,S.sect.p/pj.goal);
 return "<div style='font-size:14px;color:var(--gold2);letter-spacing:2px'>"+pj.n+"</div><div class='bb' style='margin:9px 0'><i style='width:"+(f*100).toFixed(1)+"%;background:linear-gradient(90deg,#3f6b57,#9be6c4)'></i></div><div class='sm'><span>"+S.sect.p+" / "+pj.goal+"</span><span>完成獎勵：裝飾「"+pj.r.n+"」</span></div><div class='sep'></div><div style='font-size:12px;color:var(--dim);line-height:1.9'>"+NPCS.map(n=>n+" 已獻 "+(S.sect.np[n]||0)).join("　")+"</div><div class='row' style='margin-top:10px'><button class='btn p' data-a='sect' "+(f>=1?"":"disabled")+">落成並開啟新工程</button><span class='tag'>你的每次修行自動貢獻</span></div>"}
-function vows(){const r=S.realm;const brk=pick(Object.keys(BR));
-return [{k:"count",goal:[4,6,8,10,12,14,16,18,20,22,24][Math.min(r,10)],d:"持修之願：完成 "+[4,6,8,10,12,14,16,18,20,22,24][Math.min(r,10)]+" 次任意修行"},{k:"br",arg:brk,goal:[3,4,6,7,9,10,12,13,15,16,18][Math.min(r,10)],d:BR[brk].n+"之願：完成 "+[3,4,6,7,9,10,12,13,15,16,18][Math.min(r,10)]+" 次「"+BR[brk].n+"」修行"},{k:"tier",arg:3,goal:[2,3,4,5,6,7,8,9,10,11,12][Math.min(r,10)],d:"精進之願：完成 "+[2,3,4,5,6,7,8,9,10,11,12][Math.min(r,10)]+" 次精修以上的修行"},{k:"min",goal:[60,120,200,300,420,560,720,900,1100,1300,1500][Math.min(r,10)],d:"靜心之願：累積專注 "+[60,120,200,300,420,560,720,900,1100,1300,1500][Math.min(r,10)]+" 分鐘"}]}
+function vopts(){if(!S.vopt||S.vopt.r!==S.realm)S.vopt={r:S.realm,l:vows()};return S.vopt.l}
+function vows(){const r=Math.min(S.realm,10),brk=pick(Object.keys(BR));
+const A=[4,6,8,10,12,14,16,18,20,22,24][r],B=[3,4,6,7,9,10,12,13,15,16,18][r],C=[2,3,4,5,6,7,8,9,10,11,12][r],D=[60,120,200,300,420,560,720,900,1100,1300,1500][r];
+return [{k:"count",goal:A,d:"持修之願：完成 "+A+" 次任意修行"},{k:"br",arg:brk,goal:B,d:BR[brk].n+"之願：完成 "+B+" 次「"+BR[brk].n+"」修行"},{k:"tier",arg:3,goal:C,d:"精進之願：完成 "+C+" 次精修以上的修行"},{k:"min",goal:D,d:"靜心之願：累積修行 "+D+" 分鐘"}]}
 /* ---------- 洞府 ---------- */
 function vCave(){const slots=6+S.cv.bei*2;
-return "<h2 class='t'>洞　　府</h2><p class='d'>長期努力看得見的家。一年之後，它會像一份可以走進去的成長履歷。</p>"+
+return "<h2 class='t'>洞府</h2><p class='d'>長期努力看得見的家。一年之後，它會像一份可以走進去的成長履歷。</p>"+
 "<div class='card'><h3>靈田收成</h3><div class='row'>"+(S.cv.tian?"<button class='btn p' data-a='farm' "+(S.farm>0?"":"disabled")+">領取（累積 "+S.farm+" 日）</button><span class='tag'>靈石 +"+S.cv.tian*8*S.farm+"　靈木 +"+S.cv.tian*2*S.farm+"</span><span class='tag'>不需定時收割，最多累積 3 日</span>":"<span class='tag'>煉氣境可開墾靈田</span>")+"</div></div>"+
 "<div class='grid g2' style='margin-top:12px'>"+ROOMS.map(r=>{const lv=S.cv[r.id],lock=roomLock(r.id);const c=roomCost(r.id,lv);
 return "<div class='card'><h3><span>"+r.g+" "+r.n+"</span><span class='tag'>Lv "+lv+" / "+r.max+"</span></h3><p class='d' style='margin-bottom:9px'>"+r.d+"</p><div class='bb'><i style='width:"+(lv/r.max*100)+"%;background:linear-gradient(90deg,#8a6b2a,#f3e0a8)'></i></div><div class='row' style='margin-top:10px'>"+(lock?"<span class='tag'>"+lock+"</span>":lv>=r.max?"<span class='tag'>已至圓滿</span>":"<button class='btn' data-a='room' data-v='"+r.id+"'>"+(lv?"擴建":"開啟")+"</button><span class='tag'>靈石 "+c.stone+"　靈木 "+c.wood+"　玄鐵 "+c.iron+"</span>")+"</div></div>"}).join("")+"</div>"+
-"<div class='card' style='margin-top:12px'><h3>山門碑 ‧ 成就裝飾 <span class='tag'>"+S.decor.length+" 件 ‧ 可展示 "+slots+"</span></h3>"+(S.decor.length?"<div class='grid g4'>"+S.decor.slice(0,slots).map(d=>"<div class='it'><div class='gl'>"+d.g+"</div><b>"+d.n+"</b><small>"+d.from+"<br>"+new Date(d.t).toLocaleDateString("zh-Hant")+"</small></div>").join("")+"</div>":"<p class='d'>尚無裝飾。完成成就、通關秘境與共修工程，會帶回可擺放的物件。</p>")+"</div>"+
+"<div class='card' style='margin-top:12px'><h3>山門碑 ‧ 成就裝飾 <span class='tag'>"+S.decor.length+" 件 ‧ 可展示 "+slots+"</span></h3>"+(S.decor.length?"<div class='grid g4'>"+S.decor.slice(0,slots).map(d=>"<div class='it'><div class='gl'>"+d.g+"</div><b>"+esc(d.n)+"</b><small>"+esc(d.from)+"<br>"+new Date(d.t).toLocaleDateString("zh-Hant")+"</small></div>").join("")+"</div>":"<p class='d'>尚無裝飾。完成成就、通關秘境與共修工程，會帶回可擺放的物件。</p>")+"</div>"+
 "<div class='card' style='margin-top:12px'><h3>藏書閣 ‧ 修行陳列</h3>"+shelfHTML()+"</div>"}
 function roomLock(id){if(id==="tian"&&S.realm<2)return "煉氣境開啟";if(id==="lian"&&S.realm<4)return "金丹境開啟";if(id==="shou"&&S.realm<1)return "引氣境開啟";return ""}
 function roomCost(id,lv){const n=lv+1;return{stone:60*n*n,wood:4*n,iron:3*n}}
-function shelfHTML(){const m={};S.logs.forEach(l=>{m[l.n]=(m[l.n]||0)+1});const a=Object.entries(m).sort((x,y)=>y[1]-x[1]).slice(0,10+S.cv.shu*2);
-return a.length?"<div style='font-size:12.5px;color:var(--dim);line-height:2'>"+a.map(x=>"<div class='row' style='justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.07);padding:3px 0'><span><b style='color:var(--txt)'>"+x[0]+"</b></span><span>修行 "+x[1]+" 次</span></div>").join("")+"</div>":"<p class='d'>這裏會陳列你最常回來的修行。</p>"}
+function shelfHTML(){const m={},mn={};S.logs.forEach(l=>{m[l.n]=(m[l.n]||0)+1;mn[l.n]=(mn[l.n]||0)+(l.min||0)});const a=Object.entries(m).sort((x,y)=>y[1]-x[1]).slice(0,10+S.cv.shu*2);
+return a.length?"<div style='font-size:12.5px;color:var(--dim);line-height:2'>"+a.map(x=>"<div class='row' style='justify-content:space-between;flex-wrap:nowrap;border-bottom:1px dashed rgba(255,255,255,.07);padding:3px 0'><span style='overflow-wrap:anywhere'><b style='color:var(--txt)'>"+esc(x[0])+"</b></span><span style='white-space:nowrap'>"+x[1]+" 次 ‧ "+mn[x[0]]+" 分</span></div>").join("")+"</div>":"<p class='d'>這裏會陳列你最常回來的修行。</p>"}
 /* ---------- 靈寵 ---------- */
 function vPets(){const ids=Object.keys(S.pt),p=eqP();
 let main="<p class='d'>尚未契約靈寵。"+(S.realm>=1?"用獸魂玉可締結契約。":"引氣境後可締結契約。")+"</p>";
 if(p){const base=P(p.id),bond=p.bond||0,ev=base.evo,can=bond>=100&&S.realm>=5&&p.evo==null;
-main="<div class='pet'><div class='pavt'>"+base.g+"</div><div style='flex:1'><div style='font-size:19px;letter-spacing:2px;color:var(--gold2)'>"+(p.name||base.n)+(p.evo!=null?"　<span class='tag'>"+ev[p.evo].n+"</span>":"")+"</div><div class='row' style='margin:6px 0'><span class='tag rr"+base.r+"'>"+base.r+"★</span><span class='tag' style='color:"+BR[base.b].c+"'>"+BR[base.b].n+"</span><span class='tag'>戰力 +"+(base.atk+Math.floor(bond/12))+"</span>"+(p.evo!=null?"<span class='tag'>"+ev[p.evo].d+"</span>":"")+"</div><div class='bb'><i style='width:"+Math.min(100,bond/2)+"%;background:linear-gradient(90deg,#7fd6a6,#f3e0a8)'></i></div><div class='sm'><span>羈絆 "+bond+" / 200</span><span>羈絆加成 ×"+bondMul().toFixed(2)+"</span></div></div></div><div class='sep'></div><p class='quote'>「"+base.l+"」</p><div class='row' style='margin-top:10px'><button class='btn s' data-a='rename'>改名</button>"+(can?"<button class='btn p' data-a='evo'>選擇進化分支</button>":p.evo!=null?"<span class='tag'>已定分支</span>":"<span class='tag'>羈絆 100 ＋元嬰境可進化</span>")+"<span class='tag'>離線不會餓死、不掉好感、不生病</span></div>"}
-return "<h2 class='t'>靈　　寵</h2><p class='d'>陪你修行，而不是催你登入。一隻普通靈寵也可以陪你玩很久。</p>"+
+main="<div class='pet'><div class='pavt'>"+base.g+"</div><div style='flex:1;min-width:200px'><div style='font-size:19px;letter-spacing:2px;color:var(--gold2)'>"+esc(p.name||base.n)+(p.evo!=null?"　<span class='tag'>"+ev[p.evo].n+"</span>":"")+"</div><div class='row' style='margin:6px 0'><span class='tag rr"+base.r+"'>"+base.r+"★</span><span class='tag' style='color:"+BR[base.b].c+"'>"+BR[base.b].n+"</span><span class='tag'>戰力 +"+(base.atk+Math.floor(bond/12))+"</span>"+(p.evo!=null?"<span class='tag'>"+ev[p.evo].d+"</span>":"")+"</div><div class='bb'><i style='width:"+Math.min(100,bond/2)+"%;background:linear-gradient(90deg,#7fd6a6,#f3e0a8)'></i></div><div class='sm'><span>羈絆 "+bond+" / 200</span><span>羈絆加成 ×"+bondMul().toFixed(2)+"</span></div></div></div><div class='sep'></div><p class='quote'>「"+base.l+"」</p><div class='row' style='margin-top:10px'><button class='btn s' data-a='rename'>改名</button>"+(can?"<button class='btn p' data-a='evo'>選擇進化分支</button>":p.evo!=null?"<span class='tag'>已定分支</span>":"<span class='tag'>羈絆 100 ＋元嬰境可進化</span>")+"<span class='tag'>離線不會餓死、不掉好感、不生病</span></div>"}
+return "<h2 class='t'>靈寵</h2><p class='d'>陪你修行，而不是催你登入。一隻普通靈寵也可以陪你玩很久。</p>"+
 "<div class='card'>"+main+"</div>"+
 "<div class='card' style='margin-top:12px'><h3>契靈 <span class='tag'>獸魂玉 "+S.soul+"　保底 "+S.ppity+"/40</span></h3><p class='d'>機率：5★ 5%　4★ 25%　3★ 70%。40 次內必得 4★ 以上。重複者化為羈絆 +25。獸魂玉由修行與探索取得，不以真金購買。</p><div class='row'><button class='btn p' data-a='pdraw' data-v='1' "+(S.soul>=1&&S.realm>=1?"":"disabled")+">契靈 ×1（1 玉）</button><button class='btn' data-a='pdraw' data-v='5' "+(S.soul>=5&&S.realm>=1?"":"disabled")+">契靈 ×5（5 玉）</button></div></div>"+
-"<div class='card' style='margin-top:12px'><h3>靈獸庭 <span class='tag'>"+ids.length+" / "+PETS.length+"</span></h3>"+(ids.length?"<div class='grid g4'>"+ids.map(i=>{const b=P(i),o=S.pt[i];return "<div class='it r"+b.r+(S.eqP===i?" eq":"")+"' data-a='peq' data-v='"+i+"'><div class='gl'>"+b.g+"</div><b>"+(o.name||b.n)+"</b><small class='rr"+b.r+"'>"+b.r+"★ "+BR[b.b].n+"<br>羈絆 "+(o.bond||0)+(o.evo!=null?"<br>"+b.evo[o.evo].n:"")+"</small></div>"}).join("")+"</div>":"<p class='d'>庭中尚空。</p>")+"</div>"+
-"<div class='card' style='margin-top:12px'><h3>靈寵日誌</h3><div class='log'>"+(S.exlog.filter(l=>l.p).slice(0,20).map(l=>"<div>· "+l.t+"</div>").join("")||"<div>靈寵探索時會帶回記錄。</div>")+"</div></div>"}
+"<div class='card' style='margin-top:12px'><h3>靈獸庭 <span class='tag'>"+ids.length+" / "+PETS.length+"</span></h3>"+(ids.length?"<div class='grid g4'>"+ids.map(i=>{const b=P(i),o=S.pt[i];return "<div class='it r"+b.r+(S.eqP===i?" eq":"")+"' data-a='peq' data-v='"+i+"'><div class='gl'>"+b.g+"</div><b>"+esc(o.name||b.n)+"</b><small class='rr"+b.r+"'>"+b.r+"★ "+BR[b.b].n+"<br>羈絆 "+(o.bond||0)+(o.evo!=null?"<br>"+b.evo[o.evo].n:"")+"</small></div>"}).join("")+"</div>":"<p class='d'>庭中尚空。</p>")+"</div>"+
+"<div class='card' style='margin-top:12px'><h3>靈寵日誌</h3><div class='log'>"+(S.exlog.filter(l=>l.p).slice(0,20).map(l=>"<div>· "+esc(l.t)+"</div>").join("")||"<div>靈寵探索時會帶回記錄。</div>")+"</div></div>"}
 /* ---------- 天下 ---------- */
-function vWorld(){return "<h2 class='t'>天　　下</h2><p class='d'>行動點由現實修行取得。戰敗只代表需要調整，不損失任何現實成果。</p>"+
+function vWorld(){return "<h2 class='t'>天下</h2><p class='d'>行動點由現實修行取得。戰敗只代表需要調整，不損失任何現實成果。</p>"+
 "<div class='card'><h3>行動點 <span class='tag'>"+S.ap+" / 30</span></h3><div class='bb'><i style='width:"+(S.ap/30*100)+"%;background:linear-gradient(90deg,#3f6b57,#9be6c4)'></i></div><div class='sm'><span>每次修行 +1～2（精修以上 +2）</span><span>戰力 "+power()+"</span></div></div>"+
 "<div class='grid g2' style='margin-top:12px'>"+REGIONS.map(r=>{const e=S.ex[r.id],lock=S.realm<r.req,f=Math.min(1,e.p/r.goal);
 return "<div class='card'><h3><span>"+r.n+"</span><span class='tag'>"+(lock?REALMS[r.req].n+"境開啟":e.cl?"已通關":"進度 "+e.p+"/"+r.goal)+"</span></h3><p class='d' style='margin-bottom:9px'>"+r.d+"</p><div class='bb'><i style='width:"+(f*100).toFixed(1)+"%;background:linear-gradient(90deg,"+r.c+"55,"+r.c+")'></i></div><div class='row' style='margin-top:10px'>"+(lock?"<span class='tag'>尚未開啟</span>":"<button class='btn' data-a='exp' data-v='"+r.id+"|1' "+(S.ap>=1?"":"disabled")+">探索 ×1</button><button class='btn' data-a='exp' data-v='"+r.id+"|5' "+(S.ap>=5?"":"disabled")+">探索 ×5</button>"+(e.p>=r.goal&&!e.cl?"<button class='btn p' data-a='boss' data-v='"+r.id+"' "+(S.ap>=3?"":"disabled")+">挑戰 "+r.bz+"（3 點）</button>":""))+"</div>"+(e.cl?"<div class='sm' style='margin-top:8px'><span>已取得裝飾「"+r.rw.n+"」</span><span>可重複探索取材</span></div>":"")+"</div>"}).join("")+"</div>"+
-"<div class='card' style='margin-top:12px'><h3>探索記錄</h3><div class='log'>"+(S.exlog.slice(0,40).map(l=>"<div>· "+l.t+"</div>").join("")||"<div>派出角色與靈寵，記錄會寫在這裏。</div>")+"</div></div>"}
+"<div class='card' style='margin-top:12px'><h3>探索記錄</h3><div class='log'>"+(S.exlog.slice(0,40).map(l=>"<div>· "+esc(l.t)+"</div>").join("")||"<div>派出角色與靈寵，記錄會寫在這裏。</div>")+"</div></div>"}
 function explore(rid,n){const r=RG(rid),e=S.ex[rid];let got={stone:0,shard:0,wood:0,iron:0,soul:0,exp:0};
 for(let k=0;k<n&&S.ap>0;k++){S.ap--;const pw=power(),ep=r.base+e.p*Math.max(2,r.base*.06);
 const roll=Math.random();
@@ -302,7 +365,7 @@ checkAch()}else{S.exlog.unshift({t:"【"+r.n+"】"+r.bz+" 尚難撼動（戰力 
 save();render()}
 /* ---------- 寶閣 ---------- */
 function vTre(){const ids=Object.keys(S.wp);
-return "<h2 class='t'>寶　　閣</h2><p class='d'>抽取是額外樂趣，不是唯一途徑。機率公開、設保底、重複轉碎片、碎片可定向兌換。基礎修為不被裝備大幅放大。</p>"+
+return "<h2 class='t'>寶閣</h2><p class='d'>抽取是額外樂趣，不是唯一途徑。機率公開、設保底、重複轉碎片、碎片可定向兌換。基礎修為不被裝備大幅放大。</p>"+
 "<div class='card'><h3>尋寶 <span class='tag'>靈石 "+S.stone+"　五星保底 "+S.pity+"/80</span></h3><p class='d'>機率：5★ 2%　4★ 13%　3★ 85%。每 10 抽必得 4★ 以上，80 抽必得 5★。重複者化為碎片。常駐獎池，無限時焦慮。</p><div class='row'><button class='btn p' data-a='draw' data-v='1' "+(S.stone>=100?"":"disabled")+">尋寶 ×1（100 靈石）</button><button class='btn' data-a='draw' data-v='10' "+(S.stone>=900?"":"disabled")+">尋寶 ×10（900 靈石）</button></div></div>"+
 "<div class='card' style='margin-top:12px'><h3>煉器房 "+(S.realm>=4?"":"<span class='tag'>金丹境開啟</span>")+"</h3>"+(S.realm>=4?"<p class='d'>碎片 "+S.shard+"　玄鐵 "+S.iron+"　靈木 "+S.wood+"。三／四星可直接打造；五星定向兌換 300 碎片 + 20 玄鐵。心儀之物最終一定能拿到。</p><div class='grid g4'>"+WEAPONS.map(w=>{const c=craftCost(w),ok=S.shard>=c.s&&S.iron>=c.i;return "<div class='it r"+w.r+"'><div class='gl'>"+w.g+"</div><b>"+w.n+"</b><small class='rr"+w.r+"'>"+w.r+"★</small><small>碎片 "+c.s+" ‧ 玄鐵 "+c.i+"</small><button class='btn s' style='margin-top:6px' data-a='craft' data-v='"+w.id+"' "+(ok?"":"disabled")+">"+(S.wp[w.id]?"再造→碎片":"打造")+"</button></div>"}).join("")+"</div>":"<p class='d'>金丹境後可打造法器與定向兌換五星。</p>")+"</div>"+
 "<div class='card' style='margin-top:12px'><h3>法寶閣 <span class='tag'>"+ids.length+" / "+WEAPONS.length+"</span></h3>"+(ids.length?"<div class='grid g3'>"+ids.map(i=>itcard(Object.assign({},W(i),{lv:S.wp[i].lv}),"w")).join("")+"</div>":"<p class='d'>尚無法器。</p>")+"</div>"}
@@ -327,10 +390,10 @@ modal("<h3>契靈所得</h3><div class='grid g4'>"+got.map(g=>"<div class='it r"
 /* ---------- 修行手札 ---------- */
 function vJour(){const wk=S.logs.filter(l=>l.t>now()-6048e5);
 const byBr={};wk.forEach(l=>byBr[l.br]=(byBr[l.br]||0)+1);
-const mins=wk.reduce((a,b)=>a+b.min,0);
+const mins=wk.reduce((a,b)=>a+(b.min||0),0);
 const days=[...new Set(wk.map(l=>dkey(l.t)))].length;
 const p=eqP();
-let sum="本週你完成 "+wk.length+" 次修行，專注 "+mins+" 分鐘，涵蓋 "+days+" 天。";
+let sum="本週你完成 "+wk.length+" 次修行，累積 "+mins+" 分鐘，涵蓋 "+days+" 天。";
 if(Object.keys(byBr).length)sum+="主要修習 "+Object.entries(byBr).sort((a,b)=>b[1]-a[1]).map(x=>BR[x[0]].n+" "+x[1]+" 次").join("、")+"。";
 if(S.vow)sum+="「"+S.vow.d+"」已推進至 "+Math.min(S.vow.p,S.vow.goal)+"/"+S.vow.goal+"。";
 if(p)sum+=(S.pt[p.id].name||P(p.id).n)+"的羈絆為 "+S.pt[p.id].bond+"。";
@@ -338,63 +401,62 @@ if(!wk.length)sum="本週尚無記錄。沒空也沒關係，回來時不需要�
 const mx=Math.max(1,...Object.values(S.br));
 const groups={};S.logs.slice(0,120).forEach(l=>{const k=dkey(l.t);(groups[k]=groups[k]||[]).push(l)});
 return "<h2 class='t'>修行手札</h2><p class='d'>每星期一封寫給自己的故事。可以查看真實紀錄，也可以只保留願意記住的部分。</p>"+
-"<div class='card'><h3>本週回顧</h3><p class='quote'>"+sum+"</p></div>"+
-"<div class='grid g2' style='margin-top:12px'><div class='card'><h3>長期統計</h3><div class='grid g2' style='gap:8px'>"+[["累積修行",S.st.tasks+" 次"],["累積專注",S.st.min+" 分"],["修行天數",S.st.days.length+" 天"],["完成大願",S.st.plans+" 項"],["探索勝場",S.st.wins+" 場"],["尋寶次數",S.st.draws+" 次"]].map(x=>"<div class='task' style='padding:9px'><div style='font-size:11px;color:var(--dim)'>"+x[0]+"</div><div style='font-size:17px;color:var(--gold2)'>"+x[1]+"</div></div>").join("")+"</div><div class='sep'></div>"+Object.entries(BR).map(([k,v])=>"<div style='margin-bottom:7px'><div class='sm' style='margin:0 0 3px'><span style='color:"+v.c+"'>"+v.n+"</span><span>"+fmt(S.br[k])+"</span></div><div class='bb'><i style='width:"+(S.br[k]/mx*100).toFixed(1)+"%;background:"+v.c+"'></i></div></div>").join("")+"</div>"+
-"<div class='card'><h3>對中斷友善</h3><p class='d'>此處不設「漏一天就歸零」的連續簽到。你只需看見自己累積了多少。</p><div class='task'><div style='font-size:12px;color:var(--dim)'>過去 30 天修行天數</div><div style='font-size:30px;color:var(--gold2)'>"+S.st.days.filter(d=>new Date(d).getTime()>now()-2592e6).length+" / 30</div></div><div class='sep'></div><div class='row'><button class='btn s' data-a='retreat'>"+(S.retreat?"結束閉關":"開啟閉關模式")+"</button><button class='btn s' data-a="+"'export'>匯出存檔</button><button class='btn s' data-a='import'>匯入存檔</button><button class='btn s' data-a='reset'>重置</button></div><p class='d' style='margin-top:8px'>閉關模式會隱藏尋寶與次要提示，只保留任務、計時與領獎。一款學習遊戲，應該容許你暫時少玩。</p></div></div>"+
+"<div class='card'><h3>本週回顧</h3><p class='quote'>"+esc(sum)+"</p></div>"+
+"<div class='grid g2' style='margin-top:12px'><div class='card'><h3>長期統計</h3><div class='grid g4' style='gap:8px'>"+[["累積修行",S.st.tasks+" 次"],["累積時間",S.st.min+" 分"],["修行天數",S.st.days.length+" 天"],["完成大願",S.st.plans+" 項"],["探索勝場",S.st.wins+" 場"],["尋寶次數",S.st.draws+" 次"]].map(x=>"<div class='task' style='padding:9px'><div style='font-size:11px;color:var(--dim)'>"+x[0]+"</div><div style='font-size:17px;color:var(--gold2)'>"+x[1]+"</div></div>").join("")+"</div><div class='sep'></div>"+Object.entries(BR).map(([k,v])=>"<div style='margin-bottom:7px'><div class='sm' style='margin:0 0 3px'><span style='color:"+v.c+"'>"+v.n+"</span><span>"+fmt(S.br[k])+"</span></div><div class='bb'><i style='width:"+(S.br[k]/mx*100).toFixed(1)+"%;background:"+v.c+"'></i></div></div>").join("")+"</div>"+
+"<div class='card'><h3>對中斷友善</h3><p class='d'>此處不設「漏一天就歸零」的連續簽到。你只需看見自己累積了多少。</p><div class='task'><div style='font-size:12px;color:var(--dim)'>過去 30 天修行天數</div><div style='font-size:30px;color:var(--gold2)'>"+S.st.days.filter(d=>new Date(d).getTime()>now()-2592e6).length+" / 30</div></div><div class='sep'></div><div class='row'><button class='btn s' data-a='retreat'>"+(S.retreat?"結束閉關":"開啟閉關模式")+"</button><button class='btn s' data-a='export'>匯出存檔</button><button class='btn s' data-a='import'>匯入存檔</button><button class='btn s' data-a='reset'>重置</button></div><p class='d' style='margin-top:8px'>閉關模式會隱藏尋寶與次要提示，只保留任務、計時與領獎。一款學習遊戲，應該容許你暫時少玩。</p></div></div>"+
 "<div class='card' style='margin-top:12px'><h3>成就 <span class='tag'>"+S.achs.length+" / "+ACHS.length+"</span></h3><div class='grid g3'>"+ACHS.map(a=>"<div class='ach"+(S.achs.includes(a.id)?" got":"")+"'><b>"+a.g+" "+a.n+"</b><div style='color:var(--dim);margin-top:3px'>"+a.d+"</div><div style='color:var(--gold);margin-top:3px'>裝飾："+a.dn+"</div></div>").join("")+"</div></div>"+
-"<div class='card' style='margin-top:12px'><h3>修行紀錄</h3><div class='log'>"+(Object.keys(groups).length?Object.entries(groups).map(([k,v])=>"<div style='margin-top:7px;color:var(--gold2)'>"+k+"　（"+v.length+" 次 ‧ "+v.reduce((a,b)=>a+b.min,0)+" 分）</div>"+v.map(l=>"<div>　· <b>"+l.n+"</b>　"+TIERS[l.tier].n+" ‧ "+BR[l.br].n+" ‧ 修為 +"+l.exp+"</div>").join("")).join(""):"<div>尚無紀錄。</div>")+"</div></div>"}
+"<div class='card' style='margin-top:12px'><h3>修行紀錄</h3><div class='log'>"+(Object.keys(groups).length?Object.entries(groups).map(([k,v])=>"<div style='margin-top:7px;color:var(--gold2)'>"+k+"　（"+v.length+" 次 ‧ "+v.reduce((a,b)=>a+(b.min||0),0)+" 分）</div>"+v.map(l=>"<div>　· <b>"+esc(l.n)+"</b>　"+TIERS[l.tier].n+" ‧ "+BR[l.br].n+" ‧ "+(l.min||0)+" 分 ‧ 修為 +"+l.exp+"</div>").join("")).join(""):"<div>尚無紀錄。</div>")+"</div></div>"}
 /* ---------- 計時 ---------- */
-function startTimer(id){const t=S.tasks.find(x=>x.id===id);if(!t)return;S.timer={id:id,start:now(),dur:(t.min||25)*6e4,acc:0,pz:0};save();tloop()}
+function startTimer(id){const t=S.tasks.find(x=>x.id===id);if(!t||isDone(t))return;S.timer={id:id,start:now(),dur:(t.min||25)*6e4,acc:0,pz:0};save();tloop()}
 let TI=null;
 function tloop(){const ov=document.getElementById("tov");if(!S.timer){ov.classList.remove("on");clearInterval(TI);TI=null;return}
 ov.classList.add("on");if(!TI)TI=setInterval(tloop,250);
 const T=S.timer,t=S.tasks.find(x=>x.id===T.id);if(!t){S.timer=null;return tloop()}
 const el=T.pz?T.acc:T.acc+(now()-T.start),left=Math.max(0,T.dur-el),f=cl(el/T.dur,0,1);
 const m=Math.floor(left/6e4),s=Math.floor(left%6e4/1000);
-document.getElementById("ring").innerHTML="<svg width='230' height='230'><circle cx='115' cy='115' r='100' stroke='rgba(255,255,255,.08)' stroke-width='10' fill='none'/><circle cx='115' cy='115' r='100' stroke='url(#g)' stroke-width='10' fill='none' stroke-linecap='round' stroke-dasharray='"+(628*f)+" 628'/><defs><linearGradient id='g'><stop offset='0' stop-color='#8a6b2a'/><stop offset='1' stop-color='#f3e0a8'/></linearGradient></defs></svg><div><b>"+m+":"+String(s).padStart(2,"0")+"</b><span style='font-size:12px;color:#93a3b5;letter-spacing:3px;margin-top:6px'>"+t.name+"</span></div>";
+document.getElementById("ring").innerHTML="<svg width='230' height='230'><circle cx='115' cy='115' r='100' stroke='rgba(255,255,255,.08)' stroke-width='10' fill='none'/><circle cx='115' cy='115' r='100' stroke='url(#g)' stroke-width='10' fill='none' stroke-linecap='round' stroke-dasharray='"+(628*f)+" 628'/><defs><linearGradient id='g'><stop offset='0' stop-color='#8a6b2a'/><stop offset='1' stop-color='#f3e0a8'/></linearGradient></defs></svg><div><b>"+m+":"+String(s).padStart(2,"0")+"</b><span style='font-size:12px;color:#93a3b5;letter-spacing:2px;margin-top:6px'>"+esc(t.name)+"</span></div>";
 document.getElementById("tinfo").textContent=(T.pz?"已暫停　":"")+"已完成 "+Math.round(f*100)+"%　"+TIERS[t.tier].n+" ‧ "+BR[t.br].n;
-if(left<=0){endTimer(1)}}
-function endTimer(ratio){const T=S.timer;if(!T)return;const t=S.tasks.find(x=>x.id===T.id);const el=T.pz?T.acc:T.acc+(now()-T.start);const r=ratio!=null?ratio:cl(el/T.dur,0,1);
+if(left<=0)endTimer()}
+/* 結算：ratio=實際經過/預計；記錄分鐘=實際經過分鐘（不再二次折算） */
+function endTimer(){const T=S.timer;if(!T)return;const t=S.tasks.find(x=>x.id===T.id);const el=Math.min(T.dur,T.pz?T.acc:T.acc+(now()-T.start)),r=cl(el/T.dur,0,1);
 S.timer=null;clearInterval(TI);TI=null;document.getElementById("tov").classList.remove("on");
-if(!t)return render();
+if(!t){save();return render()}
 if(r<.2){toast("已停止。未達兩成，不結算，也不扣修為。");save();return render()}
-doTask(t,Math.max(.3,r),Math.round(el/6e4))}
+doTask(t,r,Math.max(1,Math.round(el/6e4)))}
 /* ---------- 行為 ---------- */
 const ACT={
-tab:v=>{S.ui.tab=v;save();render()},
+tab:v=>{S.ui.tab=v;save();render();window.scrollTo(0,0);document.querySelector("main").scrollTop=0},
 close:()=>closeM(),
 retreat:()=>{S.retreat=!S.retreat;if(S.retreat)S.st.retreat++;checkAch();save();toast(S.retreat?"已開啟閉關模式：隱藏尋寶與次要提示":"已結束閉關");render()},
-preset:v=>{const p=PRESETS[+v];S.tasks.unshift({id:"t"+now()+ri(1,999),name:p.name,type:p.type,tier:p.tier,br:p.br,min:p.min,rep:p.rep,steps:[],done:false});save();toast("已加入："+p.name);render()},
+preset:v=>{const p=PRESETS[+v];S.tasks.unshift({id:tid(),name:p.name,type:p.type,tier:p.tier,br:p.br,min:p.min,rep:p.rep,steps:[],done:false,last:null});save();toast("已加入："+p.name);render()},
 add:()=>{const n=document.getElementById("f_n").value.trim();if(!n)return toast("請先寫下任務名稱");
 const type=document.getElementById("f_t").value,steps=document.getElementById("f_s").value.split("\n").map(x=>x.trim()).filter(x=>x).map(x=>({t:x,done:false}));
-S.tasks.unshift({id:"t"+now()+ri(1,999),name:n,type:type,tier:+document.getElementById("f_d").value,br:document.getElementById("f_b").value,min:+document.getElementById("f_m").value||25,rep:document.getElementById("f_r").value,steps:type==="plan"?steps:[],done:false});save();toast("已立修行");render()},
+S.tasks.unshift({id:tid(),name:n.slice(0,60),type:type,tier:+document.getElementById("f_d").value,br:document.getElementById("f_b").value,min:cl(Math.round(+document.getElementById("f_m").value)||25,1,600),rep:type==="plan"?"none":document.getElementById("f_r").value,steps:type==="plan"?steps:[],done:false,last:null});save();toast("已立修行");render()},
 del:v=>{S.tasks=S.tasks.filter(t=>t.id!==v);save();render()},
 start:v=>startTimer(v),
-fin:v=>{const t=S.tasks.find(x=>x.id===v);if(t)doTask(t,1)},
-step:v=>{const[id,i]=v.split("|"),t=S.tasks.find(x=>x.id===id);if(!t)return;t.steps[+i].done=true;
-const sub={id:t.id,name:t.name+" ‧ "+t.steps[+i].t,type:"result",tier:Math.max(1,t.tier-2),br:t.br,min:Math.round((t.min||30)/t.steps.length),rep:"none"};
-const r=reward(sub,1);S.exp+=r.exp;S.stone+=r.stone;S.br[t.br]+=r.br;S.ap=cl(S.ap+1,0,30);S.st.tasks++;const dk=dkey();if(!S.st.days.includes(dk))S.st.days.push(dk);
-addLog({t:now(),n:sub.name,tier:sub.tier,br:t.br,exp:r.exp,min:sub.min});
-toast("里程碑達成：修為 +"+r.exp);
-if(t.steps.every(s=>s.done)){doTask(t,1);t.done=true;S.st.plans++;toast("大願達成：「"+t.name+"」");
-modal("<h3>大願達成</h3><p class='quote'>「"+t.name+"」</p><div class='sep'></div><p class='d'>可在本命法寶刻下一道銘文，永久留下這段經歷。</p><div><label>銘文內容</label><input id='ins' value='"+t.name.replace(/'/g,"")+"'></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='inssave'>刻下</button><button class='btn' data-a='close'>之後再說</button></div>")}
-checkAch();save();render()},
+fin:v=>{const t=S.tasks.find(x=>x.id===v);if(t&&!isDone(t))doTask(t,1)},
+step:v=>{const[id,i]=v.split("|"),t=S.tasks.find(x=>x.id===id);if(!t||!t.steps[+i]||t.steps[+i].done)return;t.steps[+i].done=true;
+const sub={id:t.id,name:t.name+" ‧ "+t.steps[+i].t,type:"result",tier:Math.max(1,t.tier-2),br:t.br,min:Math.max(1,Math.round((t.min||30)/t.steps.length)),rep:"none"};
+doTask(sub,1,sub.min,true);
+if(t.steps.every(s=>s.done))doTask(t,1,0)},
 demon:v=>{const d=DEMONS[+v];document.getElementById("dmo").innerHTML="<div class='task'><p class='quote'>"+d.s+"</p><div class='row' style='margin-top:9px'><button class='btn p' data-a='dadd' data-v='"+v+"'>加入今日修行（微修 "+d.m+" 分）</button></div></div>"},
-dadd:v=>{const d=DEMONS[+v];S.tasks.unshift({id:"t"+now()+ri(1,999),name:d.t,type:"focus",tier:1,br:"vital",min:d.m,rep:"none",steps:[],done:false});save();toast("已加入："+d.t);render()},
-vowset:v=>{const o=vows()[+v];S.vow={k:o.k,arg:o.arg,goal:o.goal,p:0,d:o.d};save();toast("已立願，不限期、不會失敗");render()},
-vowdrop:()=>{S.vow=null;save();render()},
+dadd:v=>{const d=DEMONS[+v];S.tasks.unshift({id:tid(),name:d.t,type:"focus",tier:1,br:"vital",min:d.m,rep:"none",steps:[],done:false,last:null});save();toast("已加入："+d.t);render()},
+vowset:v=>{const o=vopts()[+v];if(!o)return;S.vow={k:o.k,arg:o.arg,goal:o.goal,p:0,d:o.d};S.vopt=null;save();toast("已立願，不限期、不會失敗");render()},
+vowdrop:()=>{S.vow=null;S.vopt=null;save();render()},
 bt:()=>{const r=REALMS[S.realm];if(S.exp<r.need||!S.vow||S.vow.p<S.vow.goal)return;
-S.exp-=r.need;S.realm++;S.vow=null;S.stone+=200+S.realm*120;S.shard+=40+S.realm*20;S.soul+=1;S.ap=cl(S.ap+6,0,30);checkAch();save();
+S.exp-=r.need;S.realm++;S.vow=null;S.vopt=null;S.stone+=200+S.realm*120;S.shard+=40+S.realm*20;S.soul+=1;S.ap=cl(S.ap+6,0,30);
+if(S.realm===7)S.sect={i:0,p:0,np:{},done:0,on:now()};
+checkAch();save();
 const nr=REALMS[S.realm];
 modal("<h3>渡劫 ‧ 已入「"+nr.n+"」境</h3><p class='quote'>你不是因為運氣好而突破，是因為你真的做了那些事。</p><div class='sep'></div><p class='d'>本境所得："+nr.u+"<br>獲得靈石、碎片與獸魂玉。<br>可刻下一道銘文，記住這一刻。</p><div><label>銘文內容（可留空）</label><input id='ins' value='突破至"+nr.n+"境'></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='inssave'>刻下</button><button class='btn' data-a='close'>之後再說</button></div>");render()},
 insc:()=>modal("<h3>刻下銘文</h3><p class='d'>寫下一件你真正完成的事。它只屬於你。</p><div><label>銘文內容</label><input id='ins' placeholder='例：第一次完成整本日文教材'></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='inssave'>刻下</button><button class='btn' data-a='close'>取消</button></div>"),
-inssave:()=>{const e=document.getElementById("ins");if(!e)return closeM();const t=e.value.trim();const slots=1+Math.floor(S.realm/3);
-if(t&&S.fate.length<slots){S.fate.push({t:t,d:now()});checkAch();toast("銘文已刻："+t)}else if(S.fate.length>=slots)toast("銘文位已滿，提升境界可增加");
+inssave:()=>{const e=document.getElementById("ins");if(!e)return closeM();const t=e.value.trim().slice(0,60);const slots=1+Math.floor(S.realm/3);
+if(t&&S.fate.length<slots){S.fate.push({t:t,d:now()});checkAch();toast("銘文已刻："+t)}else if(t&&S.fate.length>=slots)toast("銘文位已滿，提升境界可增加");
 save();closeM();render()},
 farm:()=>{if(!S.cv.tian||S.farm<1)return;S.stone+=S.cv.tian*8*S.farm;S.wood+=S.cv.tian*2*S.farm;toast("靈田收成：靈石 +"+S.cv.tian*8*S.farm+"　靈木 +"+S.cv.tian*2*S.farm);S.farm=0;save();render()},
 room:v=>{const r=ROOMS.find(x=>x.id===v),lv=S.cv[v],c=roomCost(v,lv);if(roomLock(v)||lv>=r.max)return;
 if(S.stone<c.stone||S.wood<c.wood||S.iron<c.iron)return toast("材料不足：需靈石 "+c.stone+"、靈木 "+c.wood+"、玄鐵 "+c.iron);
-S.stone-=c.stone;S.wood-=c.wood;S.iron-=c.iron;S.cv[v]++;save();toast(r.n+" 已至 Lv"+S.cv[v]);render()},
+S.stone-=c.stone;S.wood-=c.wood;S.iron-=c.iron;S.cv[v]++;if(v==="tian"&&lv===0)S.farm=0;save();toast(r.n+" 已至 Lv"+S.cv[v]);render()},
 exp:v=>{const[id,n]=v.split("|");explore(id,+n)},
 boss:v=>boss(v),
 draw:v=>draw(+v),
@@ -405,17 +467,17 @@ craft:v=>{const w=W(v),c=craftCost(w);if(S.shard<c.s||S.iron<c.i)return;S.shard-
 if(S.wp[v]){const sh=w.r===5?120:w.r===4?45:12;S.shard+=sh;toast("再造 "+w.n+"：重複轉為碎片 +"+sh)}else{S.wp[v]={lv:1};if(!S.eqW)S.eqW=v;toast("打造成功："+w.n)}
 checkAch();save();render()},
 peq:v=>{S.eqP=v;save();toast("已帶上 "+(S.pt[v].name||P(v).n));render()},
-rename:()=>{const p=eqP();if(!p)return;modal("<h3>為靈寵改名</h3><div><label>名字</label><input id='pn' value='"+(p.name||P(p.id).n)+"'></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='rnsave'>確定</button><button class='btn' data-a='close'>取消</button></div>")},
+rename:()=>{const p=eqP();if(!p)return;modal("<h3>為靈寵改名</h3><div><label>名字</label><input id='pn' value='"+esc(p.name||P(p.id).n)+"'></div><div class='row' style='margin-top:10px'><button class='btn p' data-a='rnsave'>確定</button><button class='btn' data-a='close'>取消</button></div>")},
 rnsave:()=>{const p=eqP(),e=document.getElementById("pn");if(p&&e&&e.value.trim())S.pt[p.id].name=e.value.trim().slice(0,8);save();closeM();render()},
 evo:()=>{const p=eqP();if(!p)return;const b=P(p.id);
-modal("<h3>選擇進化分支 ‧ "+(p.name||b.n)+"</h3><p class='d'>同一隻靈寵可以走向不同方向。選定後便是牠獨有的樣子。</p><div class='grid g3'>"+b.evo.map((e,i)=>"<div class='it'><div class='gl'>"+b.g+"</div><b>"+e.n+"</b><small>"+e.d+"</small><button class='btn s' style='margin-top:7px' data-a='evosave' data-v='"+i+"'>選擇</button></div>").join("")+"</div>")},
+modal("<h3>選擇進化分支 ‧ "+esc(p.name||b.n)+"</h3><p class='d'>同一隻靈寵可以走向不同方向。選定後便是牠獨有的樣子。</p><div class='grid g3'>"+b.evo.map((e,i)=>"<div class='it'><div class='gl'>"+b.g+"</div><b>"+e.n+"</b><small>"+e.d+"</small><button class='btn s' style='margin-top:7px' data-a='evosave' data-v='"+i+"'>選擇</button></div>").join("")+"</div>")},
 evosave:v=>{const p=eqP();if(!p)return;S.pt[p.id].evo=+v;save();closeM();toast("進化完成："+P(p.id).evo[+v].n);render()},
-export:()=>modal("<h3>匯出存檔</h3><p class='d'>複製以下文字妥善保存。</p><textarea rows='8'>"+JSON.stringify(S)+"</textarea><div class='row' style='margin-top:10px'><button class='btn p' data-a='close'>關閉</button></div>"),
-import:()=>modal("<h3>匯入存檔</h3><p class='d'>貼上存檔文字，將覆蓋目前進度。</p><textarea id='imp' rows='8'></textarea><div class='row' style='margin-top:10px'><button class='btn p' data-a='impsave'>匯入</button><button class='btn' data-a='close'>取消</button></div>"),
-impsave:()=>{try{const o=JSON.parse(document.getElementById("imp").value);S=Object.assign(def(),o);save();closeM();toast("已匯入");render()}catch(e){toast("格式有誤")}},
+export:()=>modal("<h3>匯出存檔</h3><p class='d'>複製以下文字妥善保存。舊版存檔同樣可匯入，會自動升級並保留全部紀錄。</p><textarea rows='8' readonly onclick='this.select()'>"+esc(JSON.stringify(S))+"</textarea><div class='row' style='margin-top:10px'><button class='btn p' data-a='close'>關閉</button></div>"),
+import:()=>modal("<h3>匯入存檔</h3><p class='d'>貼上存檔文字，將覆蓋目前進度。舊版存檔會自動升級。</p><textarea id='imp' rows='8'></textarea><div class='row' style='margin-top:10px'><button class='btn p' data-a='impsave'>匯入</button><button class='btn' data-a='close'>取消</button></div>"),
+impsave:()=>{try{const o=JSON.parse(document.getElementById("imp").value);if(!o||typeof o!=="object")throw 0;S=migrate(o);save();closeM();toast("已匯入");render()}catch(e){toast("格式有誤")}},
 reset:()=>modal("<h3>重置修行</h3><p class='d'>將清除所有進度，無法復原。確定嗎？</p><div class='row'><button class='btn' data-a='resetyes'>確定重置</button><button class='btn p' data-a='close'>取消</button></div>"),
-resetyes:()=>{S=def();save();closeM();toast("已重置");render()},
-sect:()=>{const pj=sectProj();if(S.sect.p<pj.goal)return;S.decor.push({g:pj.r.g,n:pj.r.n,from:"共修 "+pj.n,t:now()});S.sect.i++;S.sect.p=0;S.sect.np={};S.sect.done++;S.stone+=500;checkAch();save();
+resetyes:()=>{S=fresh();save();closeM();toast("已重置");render()},
+sect:()=>{if(S.realm<7)return;const pj=sectProj();if(S.sect.p<pj.goal)return;S.decor.push({g:pj.r.g,n:pj.r.n,from:"共修 "+pj.n,t:now()});S.sect.i++;S.sect.p=0;S.sect.np={};S.sect.done++;S.stone+=500;checkAch();save();
 modal("<h3>工程落成 ‧ "+pj.n+"</h3><p class='quote'>沒有人被公開比較，也沒有人因缺席被罰。你們只是各自做完了自己的事。</p><div class='sep'></div><p class='d'>獲得裝飾「"+pj.r.n+"」與靈石 500，新工程已開啟。</p><div class='row'><button class='btn p' data-a='close'>好</button></div>");render()},
 tpause:()=>{const T=S.timer;if(!T)return;if(T.pz){T.start=now();T.pz=0}else{T.acc+=now()-T.start;T.pz=1}save();tloop()},
 tdone:()=>endTimer(),
@@ -423,10 +485,10 @@ tcancel:()=>{S.timer=null;clearInterval(TI);TI=null;document.getElementById("tov
 document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;if(ACT[a])ACT[a](b.dataset.v,b)});
 document.getElementById("ov").addEventListener("click",e=>{if(e.target.id==="ov")closeM()});
 /* ---------- 渲染 ---------- */
-function render(){dayTick();S.seen=now();sidebar();const v={today:vToday,char:vChar,cave:vCave,pets:vPets,world:vWorld,treasure:vTre,journal:vJour}[S.ui.tab]||vToday;document.getElementById("view").innerHTML=v()}
+function render(){dayTick();S.seen=now();if(archiveTasks())save();sidebar();const v={today:vToday,char:vChar,cave:vCave,pets:vPets,world:vWorld,treasure:vTre,journal:vJour}[S.ui.tab]||vToday;document.getElementById("view").innerHTML=v()}
 /* ---------- 背景美術 ---------- */
 const cv=document.getElementById("bg"),cx=cv.getContext("2d");let mo=[],W0=0,H0=0;
-function resize(){W0=cv.width=innerWidth;H0=cv.height=innerHeight;mo=[];for(let i=0;i<70;i++)mo.push({x:Math.random()*W0,y:Math.random()*H0,r:rnd(.6,2.1),s:rnd(.08,.4),o:rnd(.15,.7),p:Math.random()*6.28})}
+function resize(){W0=cv.width=innerWidth;H0=cv.height=innerHeight;mo=[];for(let i=0;i<(W0<860?40:70);i++)mo.push({x:Math.random()*W0,y:Math.random()*H0,r:rnd(.6,2.1),s:rnd(.08,.4),o:rnd(.15,.7),p:Math.random()*6.28})}
 function mnt(y,h,c,o){cx.globalAlpha=o;cx.fillStyle=c;cx.beginPath();cx.moveTo(0,H0);let x=0;while(x<W0+60){const hh=h*(.55+.45*Math.sin(x*.0023+y));cx.lineTo(x,H0-y-hh);x+=60}cx.lineTo(W0,H0);cx.closePath();cx.fill();cx.globalAlpha=1}
 function bgLoop(t){cx.clearRect(0,0,W0,H0);const g=cx.createLinearGradient(0,0,0,H0);g.addColorStop(0,"#070b11");g.addColorStop(.45,"#0c1420");g.addColorStop(1,"#131a1d");cx.fillStyle=g;cx.fillRect(0,0,W0,H0);
 cx.globalAlpha=.5;const mg=cx.createRadialGradient(W0*.78,H0*.17,4,W0*.78,H0*.17,120);mg.addColorStop(0,"rgba(243,224,168,.9)");mg.addColorStop(1,"rgba(243,224,168,0)");cx.fillStyle=mg;cx.beginPath();cx.arc(W0*.78,H0*.17,120,0,6.3);cx.fill();cx.globalAlpha=1;
@@ -434,9 +496,7 @@ mnt(40,H0*.3,"#0f1a22",.85);mnt(110,H0*.36,"#0b1319",.8);mnt(190,H0*.42,"#070d12
 mo.forEach(m=>{m.y-=m.s;m.x+=Math.sin(t/2600+m.p)*.22;if(m.y<-6){m.y=H0+6;m.x=Math.random()*W0}cx.globalAlpha=m.o*(.55+.45*Math.sin(t/900+m.p));cx.fillStyle="#f3e0a8";cx.beginPath();cx.arc(m.x,m.y,m.r,0,6.3);cx.fill()});cx.globalAlpha=1;requestAnimationFrame(bgLoop)}
 addEventListener("resize",resize);resize();requestAnimationFrame(bgLoop);
 /* ---------- 啟動 ---------- */
-if(!load()){S=def();S.wp.w1={lv:1};S.eqW="w1";S.pt.p4={bond:10,evo:null,name:null};S.eqP="p4";
-PRESETS.slice(0,4).forEach(p=>S.tasks.push({id:"t"+now()+ri(1,9999)+Math.random().toString(36).slice(2,5),name:p.name,type:p.type,tier:p.tier,br:p.br,min:p.min,rep:p.rep,steps:[],done:false}));
-save();
+if(!load()){S=fresh();save();
 setTimeout(()=>modal("<h3>塵間修仙錄</h3><p class='quote'>「你在現實中坐下來開始做事，這個世界就會亮起一寸。」</p><div class='sep'></div><p class='d'>· 在「今日修行」加入任務，自訂形式與難度。<br>· 專注計時中斷亦按比例結算，<b>不扣修為、不設連續簽到</b>。<br>· 修為足夠後，自選一項「突破之願」渡劫；不抽成功率、不會失敗。<br>· 抽取機率公開、設保底、重複轉碎片、碎片可定向兌換。<br>· 忙碌時可開「閉關模式」；離開數週回來，只會被歡迎。</p><div class='row'><button class='btn p' data-a='close'>入道</button></div>"),400)}
 if(S.timer)tloop();render();setInterval(save,3e4);
 </script></body></html>
